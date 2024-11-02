@@ -15,13 +15,13 @@ module.exports = {
           primary: "#685690",
         },
       },
-    //   {
-    //     dark: {
-    //       ...require("daisyui/src/theming/themes")["dark"],
-    //       primary: "#685690",
-    //     },
-    //   },
-    //   "dracula",
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#685690",
+        },
+      },
+      "dracula",
     ],
   },
 };
