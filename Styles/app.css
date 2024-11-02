@@ -81,3 +81,60 @@ nav[role=navigation] > ul > li button[disabled] {
 nav[role=navigation] > ul > li button[aria-current=true] {
   @apply btn-outline;
 }
+
+[data-theme="light"] .card {
+  @apply bg-base-100;
+}
+
+[data-theme="dark"] .card {
+  @apply bg-base-300;
+}
+
+yield-search-box > .yield-search-bar {
+  position: relative;
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  @apply bg-base-100 shadow-lg border border-base-200 rounded-lg w-full;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  top: 105%;
+}
+
+.suggestion-item {
+  @apply border-b border-base-200 p-4 cursor-pointer;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item.selected, .suggestion-item:hover {
+  @apply bg-base-300;
+}
+
+.suggestion-item .subtitle {
+  @apply text-base-content/50;
+}
+
+.suggestion-item .description {
+  @apply text-base-content/75;
+}
+
+.autocomplete-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.suggestions-list .selected {
+  @apply bg-base-300;
+}

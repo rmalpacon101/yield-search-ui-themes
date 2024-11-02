@@ -22,6 +22,9 @@ module.exports = {
         },
       },
       "dracula",
+      "corporate",
+      "cupcake",
+      "emerald",
     ],
   },
 };
