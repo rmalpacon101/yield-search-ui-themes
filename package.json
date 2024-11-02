@@ -1,10 +1,16 @@
 {
-  "name": "node-starter",
+  "name": "vite-starter",
+  "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": " concurrently \"postcss Styles/app.css -o wwwroot/css/app.css --watch\" "
+    "dev": "vite",
+    "build": "vite build --watch --config ./vite.config.js",
+    "preview": "vite preview",
+    "build:css": "concurrently \"postcss Styles/app.css -o app.css --watch\""
   },
   "devDependencies": {
+    "vite": "^5.4.2",
     "@tailwindcss/typography": "^0.5.12",
     "autoprefixer": "^10",
     "concurrently": "^8",

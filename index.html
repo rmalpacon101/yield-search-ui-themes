@@ -1,0 +1,62 @@
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Used Cars Search</title>
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="app.css">
+    <script src="yieldSearchInstance.js"></script>
+</head>
+
+<body data-theme="light" class="bg-base-200">
+    <div class="min-h-screen">
+        <yield-search>
+            <div class="shadow">
+                <div class="container mx-auto px-4 py-4">
+                    <div class="flex flex-col md:flex-row gap-2">
+                        <div class="flex items-end w-full">
+                            <yield-search-box></yield-search-box>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-end gap-2 w-full">
+                            <yield-search-facet></yield-search-facet>
+                            <yield-clearall buttontext="Clear"></yield-clearall>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </yield-search>
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <yield-search-total></yield-search-total>
+                <yield-search-sort></yield-search-sort>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 pb-8">
+            <div class="my-5">
+                <yield-search-result></yield-search-result>
+            </div>
+            <div class="my-5 flex justify-center">
+                <yield-search-pagination></yield-search-pagination>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const search = document.querySelector('yield-search');
+      search.init({
+        collectionId: '3f296b92-00b3-41b7-b351-552c32177709',
+        apiKey: 'xxYZAhkNHp40WhvrZeuBPkBa3YoILY2L',
+        baseUrl: 'https://localhost:7166/api/client/search',
+        enableQueryString: true,
+        //fields: ["*"],
+        onFilterClicked: (value) => console.log(value),
+        template: (data) => templateContent1(data),
+        onSuggestionClick: (suggestion) => console.log(suggestion)
+      });
+    });
+
+  </script>
+</html>

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Maven Pro", sans-serif;
+    /*font-optical-sizing: auto;*/
+    /*font-weight: 400;*/
+    /*font-style: normal;*/
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+yield-search-box {
+  @apply form-control flex-1;
+}
+
+.yield-search-bar form {
+  @apply flex gap-2 mb-0;
+}
+
+yield-clearall > button {
+  @apply btn btn-sm w-full md:btn-md btn-primary;
+}
+
+yield-search-facet {
+  @apply flex flex-col gap-2 md:flex-row;
+}
+
+yield-search-sort > .yield-search-sort > select {
+  @apply w-full md:w-auto;
+}
+
+.yield-search-bar input[type="search"] {
+  @apply input input-bordered w-full;
+}
+
+.yield-search-bar button {
+  @apply btn btn-primary;
+}
+
+.yield-filter {
+  @apply md:w-48;
+}
+
+.yield-filter-values, .yield-search-sort > select {
+  @apply select select-bordered w-full;
+}
+
+yield-search-result {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+nav[role=navigation] {
+  @apply flex justify-center;
+}
+
+nav[role=navigation] > ul {
+  @apply flex justify-between gap-1 p-0;
+}
+
+nav[role=navigation] > ul > li button {
+  @apply btn btn-xs sm:btn-sm md:btn-md btn-primary;
+  margin: 0;
+}
+
+nav[role=navigation] > ul > li button[aria-current=true] {
+  @apply btn-outline;
+}
+
+nav[role=navigation] > ul > li button[disabled] {
+  @apply btn-outline;
+  opacity: 0.6;
+}
+
+nav[role=navigation] > ul > li button[aria-current=true] {
+  @apply btn-outline;
+}
