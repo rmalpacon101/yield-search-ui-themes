@@ -20,7 +20,7 @@ yield-search-box {
   @apply form-control flex-1;
 }
 
-.yield-search-bar form {
+yield-search-box > .yield-search-bar form {
   @apply flex gap-2 mb-0;
 }
 
@@ -36,19 +36,16 @@ yield-search-sort > .yield-search-sort > select {
   @apply w-full md:w-auto;
 }
 
-.yield-search-bar input[type="search"] {
+yield-search-box > .yield-search-bar input[type="search"] {
   @apply input input-bordered w-full;
 }
 
-.yield-search-bar button {
+yield-search-box > .yield-search-bar button {
   @apply btn btn-primary;
 }
 
-.yield-filter {
-  @apply md:w-48;
-}
-
-.yield-filter-values, .yield-search-sort > select {
+yield-facet-dropdownlist > select,
+yield-search-sort > div > select {
   @apply select select-bordered w-full;
 }
 
@@ -56,29 +53,29 @@ yield-search-result {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
 }
 
-nav[role=navigation] {
+nav[role="navigation"] {
   @apply flex justify-center;
 }
 
-nav[role=navigation] > ul {
+nav[role="navigation"] > ul {
   @apply flex justify-between gap-1 p-0;
 }
 
-nav[role=navigation] > ul > li button {
+nav[role="navigation"] > ul > li button {
   @apply btn btn-xs sm:btn-sm md:btn-md btn-primary;
   margin: 0;
 }
 
-nav[role=navigation] > ul > li button[aria-current=true] {
+nav[role="navigation"] > ul > li button[aria-current="true"] {
   @apply btn-outline;
 }
 
-nav[role=navigation] > ul > li button[disabled] {
+nav[role="navigation"] > ul > li button[disabled] {
   @apply btn-outline;
   opacity: 0.6;
 }
 
-nav[role=navigation] > ul > li button[aria-current=true] {
+nav[role="navigation"] > ul > li button[aria-current="true"] {
   @apply btn-outline;
 }
 
@@ -96,11 +93,11 @@ yield-search-box > .yield-search-bar {
 
 .suggestions-dropdown {
   position: absolute;
-  @apply bg-base-100 shadow-lg border border-base-200 rounded-lg w-full;
+  @apply bg-base-100 shadow-lg border-2 border-base-200 rounded-lg w-full shadow-lg;
   max-height: 400px;
   overflow-y: auto;
   z-index: 1000;
-  top: 105%;
+  top: 110%;
 }
 
 .suggestion-item {
@@ -111,7 +108,8 @@ yield-search-box > .yield-search-bar {
   border-bottom: none;
 }
 
-.suggestion-item.selected, .suggestion-item:hover {
+.suggestion-item.selected,
+.suggestion-item:hover {
   @apply bg-base-300;
 }
 
@@ -137,4 +135,42 @@ yield-search-box > .yield-search-bar {
 
 .suggestions-list .selected {
   @apply bg-base-300;
+}
+
+/* Sidebar */
+.side-filter .yield-filter-header {
+  @apply mb-2 px-2 text-lg font-semibold;
+}
+
+
+.side-filter .yield-filter {
+  @apply px-1  mb-2;
+}
+
+.side-filter .yield-filter-value > .yield-filter .yield-filter-body{
+  @apply ml-2;
+}
+
+.side-filter .yield-filter-value > .yield-filter .yield-filter-header{
+  @apply text-base font-semibold py-1;
+}
+
+.side-filter yield-facet-checkboxlist {
+  @apply p-0;
+}
+
+.side-filter .yield-filter-body {
+  @apply flex items-center py-1 px-2 px-2 mb-1 hover:bg-base-200;
+}
+
+.side-filter .yield-filter-body input[type="checkbox"] {
+  @apply checkbox border-2 border-base-300;
+}
+
+.side-filter .yield-filter-body .yield-filter-body-label {
+  @apply ml-3 text-sm flex-1 group-hover:text-primary cursor-pointer;
+}
+
+.side-filter .yield-filter-body .yield-filter-body-label-count {
+  @apply text-sm;
 }

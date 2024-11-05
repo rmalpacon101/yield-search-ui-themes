@@ -9,18 +9,8 @@ module.exports = {
   },
   daisyui: {
     themes: [
-      {
-        light: {
-          ...require("daisyui/src/theming/themes")["light"],
-          primary: "#685690",
-        },
-      },
-      {
-        dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
-          primary: "#685690",
-        },
-      },
+      "light",
+      "dark",
       "dracula",
       "corporate",
       "cupcake",

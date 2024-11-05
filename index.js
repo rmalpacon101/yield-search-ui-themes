@@ -6,7 +6,7 @@ const templateContent1 = (item) => {
         <figure>
             <img
                 alt="${item.title}"
-                src="https://placehold.co/360x196?text=Coming Soon&font=montserrat">
+                src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80">
         </figure>
         <div class="card-body p-4">
             <h2 class="card-title text-lg">
