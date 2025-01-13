@@ -111,8 +111,8 @@ const initSearch = () => {
   };
 
   search.init({
-    collectionId: "36a39dc6-4162-4788-85ad-70401f22cbc2",
-    apiKey: "MgLa8fqq1vbJNIuk9HQMg2pYFcO8fzSX",
+    collectionId: import.meta.env.VITE_SEARCH_COLLECTION_ID,
+    apiKey: import.meta.env.VITE_SEARCH_KEY,
     baseUrl: "https://api.yieldsearchpro.io/api/client/search",
     enableQueryString: true,
     limit: 12,

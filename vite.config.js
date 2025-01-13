@@ -1,16 +1,9 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
 
 export default defineConfig({
   server: {
     port: 5173,
-    host: true
+    host: true,
   },
-  build: {
-    assetsDir: "",
-    rollupOptions: {
-      output: {
-        assetFileNames: "yield-search-ui-themes/[name].[hash].[ext]"
-      }
-    }
-  }
-})
+  base: "/yield-search-ui-themes",
+});
