@@ -6,7 +6,7 @@ const initSearch = () => {
  *
  * @param {Object} item - The item object containing details to be displayed.
  * @param {Function} html - A tagged template function to generate HTML.
- * @returns {string} The generated HTML content.
+ * @returns {string} The generated HTML content
  */
   const templateContent = (item, html) => {
     const promoted = item.promoted ? "border-blue-500" : "border-base-200";
