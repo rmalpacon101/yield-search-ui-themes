@@ -53,6 +53,10 @@ yield-search-result {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
 }
 
+yield-search-result div.empty-result {
+  @apply col-span-full;
+}
+
 nav[role="navigation"] {
   @apply flex justify-center;
 }
@@ -88,15 +92,27 @@ nav[role="navigation"] > ul > li button[aria-current="true"] {
 }
 
 yield-search-box > .yield-search-bar {
-  position: relative;
+  @apply relative;
+}
+
+.suggestions-footer {
+  @apply bg-base-200 sticky bottom-0 p-2 flex gap-2 justify-end font-semibold;
+}
+
+.suggestions-footer a {
+  @apply font-bolder;
+}
+
+.suggestions-footer a > span{
+  @apply text-accent font-bolder;
+}
+
+.suggestions-content {
+  @apply overflow-y-auto max-h-[400px];
 }
 
 .suggestions-dropdown {
-  position: absolute;
-  @apply bg-base-100 shadow-lg border-2 border-base-200 rounded-lg w-full shadow-lg;
-  max-height: 400px;
-  overflow-y: auto;
-  z-index: 1000;
+  @apply absolute bg-base-100 shadow-lg border border-base-200 rounded w-full shadow-lg z-[1];
   top: 110%;
 }
 
@@ -144,7 +160,11 @@ yield-search-box > .yield-search-bar {
 
 
 .side-filter .yield-filter {
-  @apply px-1  mb-2;
+  @apply px-1 mb-2;
+}
+
+.side-filter .yield-filter ul.yield-filter-values {
+  @apply max-h-[300px] md:max-h-[900px] overflow-y-auto;
 }
 
 .side-filter .yield-filter-value > .yield-filter .yield-filter-body{
@@ -173,4 +193,48 @@ yield-search-box > .yield-search-bar {
 
 .side-filter .yield-filter-body .yield-filter-body-label-count {
   @apply text-sm;
+}
+
+.collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-content) {
+  @apply pb-0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-base-100;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.hit {
+  @apply card card-bordered shadow-xl;
+}
+
+.hit .hit-content {
+  @apply card-body p-4;
+}
+
+.hit .hit-content .hit-title {
+  @apply card-title text-lg font-semibold;
+}
+
+.hit .hit-content .hit-description {
+  @apply text-sm;
+}
+
+.hit .hit-content .hit-actions {
+  @apply card-actions justify-between items-end mt-2;
 }

@@ -1,10 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./index.html", "./**/*.{js,ts,jsx,tsx}"],
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+import typography from "@tailwindcss/typography";
+import daisyui from "daisyui";
+
+export default {
+  content: ["./*.{js,html}"],
+  plugins: [typography, daisyui],
   theme: {
     fontWeight: {
       semibold: 500,
+      bolder: 900
+    },
+    extend: {
+      padding: {
+        '1/12': '8.333333%',
+      },
     },
   },
   daisyui: {

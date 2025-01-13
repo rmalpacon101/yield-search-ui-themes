@@ -6,88 +6,99 @@
     <title>Used Cars Search</title>
     <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="app.css">
-    <script src="yieldSearchInstance.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="antialiased">
-    <div class="drawer">
-        <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle drawer" />
-        <div class="drawer-content">
-            <!-- Page content here -->
-            <div class="min-h-screen">
-                <div class="container mx-auto px-4 py-4">
-                    <div class="flex justify-between lg:justify-end items-center">
-                        <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </label>
-                    </div>
-                </div>
-                <div class="shadow">
-                    <div class="container mx-auto px-4 py-4">
-                        <div class="flex flex-col md:flex-row gap-2">
-                            <div class="flex items-end w-full">
-                                <yield-search-box></yield-search-box>
-                            </div>
-                            <div class="hidden md:flex flex-col md:flex-row md:items-end gap-2 w-full">
-                                <yield-facet facet-field="price" control="dropdown"></yield-facet>
-                                <yield-facet facet-field="make" control="dropdown"></yield-facet>
-                                <yield-facet facet-field="bodystyle" control="dropdown"></yield-facet>
-                                <yield-facet facet-field="colour" control="dropdown"></yield-facet>
-                                <label for="my-drawer" class="btn btn-primary drawer-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                    </svg>
-                                </label>
-                                <yield-clearall buttontext="Clear"></yield-clearall>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container mx-auto px-4 py-4">
-                    <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                        <yield-search-total></yield-search-total>
-                        <div class="flex flex-col md:flex-row gap-2">
-                            <yield-search-sort></yield-search-sort>
-                            <select value="light" class="select select-bordered" onchange="changeTheme(this.value)"
-                                aria-label="Theme selector">
-                                <option value="">Select Theme</option>
-                                <option value="light">Light</option>
-                                <option value="dark">Dark</option>
-                                <option value="corporate">Corporate</option>
-                                <option value="cupcake">Cupcake</option>
-                                <option value="emerald">Emerald</option>
-                                <option value="dracula">Dracula</option>
-                            </select>
-                        </div> 
-                    </div>
-                </div>
-                <div class="container mx-auto px-4 pb-8">
-                    <div class="my-5">
-                        <yield-search-result></yield-search-result>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="my-5 flex justify-center">
-                        <yield-search-pagination></yield-search-pagination>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="drawer-side">
-            <label for="my-drawer" class="drawer-overlay"></label>
-            <div class="w-80 min-h-full bg-base-100">
-                <!-- Sidebar content here -->
-                <div class="flex flex-col w-full gap-2">
-                    <yield-clearall buttontext="Clear" class="p-2"></yield-clearall>
-                    <yield-search-facet class="side-filter flex-col gap-3"></yield-search-facet>
-                </div>
-            </div>
+    <div id="loader" class="absolute inset-0 bg-base-100 bg-opacity-50 backdrop-blur-sm flex flex-col items-center justify-center pt-8 z-10 hidden">
+        <div class="bg-transparent p-8 flex flex-col items-center">
+            <!-- Spinner -->
+            <div class="loading loading-ring loading-lg"></div>
+            <!-- Loading Text -->
+            <p class="mt-4 text-lg font-semibold">Loading...</p>
         </div>
     </div>
+    <div class="drawer">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle drawer" />
+      <div class="drawer-content">
+        <!-- Page content here -->
+        <div class="min-h-screen">
+          <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between lg:justify-end items-center">
+              <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </label>
+            </div>
+          </div>
+          <div class="shadow">
+            <div class="container mx-auto px-4 py-4">
+              <div class="flex flex-col md:flex-row gap-2">
+                <div class="flex items-end w-full">
+                  <yield-search-box enable-suggestions="false"></yield-search-box>
+                </div>
+                <div class="hidden md:flex flex-col md:flex-row md:items-end gap-2 w-full">
+                  <yield-facet facet-field="price" control="dropdown" class="w-full"></yield-facet>
+                  <yield-facet facet-field="make" control="dropdown" class="w-full"></yield-facet>
+                  <label for="my-drawer" class="btn btn-primary drawer-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                  </label>
+                  <yield-clearall buttontext="Clear"></yield-clearall>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <yield-search-total></yield-search-total>
+              <div class="flex flex-col md:flex-row gap-2">
+                <yield-search-sort></yield-search-sort>
+                <select value="light" class="select select-bordered" onchange="changeTheme(this.value)"
+                  aria-label="Theme selector">
+                  <option value="">Select Theme</option>
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                  <option value="corporate">Corporate</option>
+                  <option value="cupcake">Cupcake</option>
+                  <option value="emerald">Emerald</option>
+                  <option value="dracula">Dracula</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="container mx-auto px-4 pb-8">
+            <div class="my-5">
+              <yield-search-result></yield-search-result>
+            </div>
+            <div class="divider"></div>
+            <div class="my-5 flex justify-center">
+              <yield-search-pagination></yield-search-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-side z-50">
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <div class="w-80 min-h-full bg-base-100">
+          <div class="flex justify-between items-center p-2">
+            <header class="text-lg font-semibold">Filters:</header>
+            <yield-clearall buttontext="Clear"></yield-clearall>
+          </div>
+          <!-- Sidebar content here -->
+          <div class="flex flex-col w-full gap-2">
+            <yield-search-facet class="side-filter flex-col gap-0"></yield-search-facet>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
-<script type="module" src="./out-tsc/src/yield-search.js"></script>
+<script src="https://cdn.yieldsearchpro.io/yield-searchpro-ui.js"></script>
 <script src="index.js"></script>
 <script>
 
@@ -108,49 +119,11 @@
     }
 
     document.addEventListener("DOMContentLoaded", (event) => {
+
         const theme = getParameterByName('theme') || 'light';
         document.body.setAttribute('data-theme', theme);
         document.querySelector('select').value = theme;
-
-        const search = document.createElement('yield-search');
-        search.init({
-            collectionId: '3f296b92-00b3-41b7-b351-552c32177709',
-            apiKey: 'xxYZAhkNHp40WhvrZeuBPkBa3YoILY2L',
-            baseUrl: 'https://localhost:7166/api/client/search',
-            enableQueryString: true,
-            limit: 12,
-            //fields: ["*"],
-            onFilterClicked: (value) => console.log(value),
-            template: (data) => templateContent1(data),
-            onSuggestionClick: (suggestion) => console.log(suggestion),
-            onFacetHeaderClicked: (e) => {
-                const sideFilter = document.querySelector('.side-filter');
-            },
-            onInit: () => {
-                const sideFilter = document.querySelector('.side-filter');
-                const children = Array.from(sideFilter.children);
-                console.log(children);
-            }
-        });
-
-        const sideFilter = document.querySelector('.side-filter');
-        const children = Array.from(sideFilter.children);
-        console.log(children);
-        children.forEach(child => {
-            console.log(child);
-            if (child.classList.contains('yield-filter')) {
-                const header = child.querySelector('.yield-filter-header');
-                const content = child.querySelector('.yield-filter-values');
-                
-                if (header && content) {
-                    header.addEventListener('click', () => {
-                        content.classList.toggle('collapse-open');
-                    });
-                }
-            }
-        });
     });
-
 </script>
 
 </html>
