@@ -350,7 +350,7 @@ npm-debug.log
 
 # build
 _site/
-#dist/
+dist/
 out-tsc/
 
 storybook-static

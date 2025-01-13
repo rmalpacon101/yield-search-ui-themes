@@ -6,6 +6,11 @@ export default defineConfig({
     host: true
   },
   build: {
-    assetsDir: "yield-search-ui-themes"
+    assetsDir: "",
+    rollupOptions: {
+      output: {
+        assetFileNames: "yield-search-ui-themes/[name].[hash].[ext]"
+      }
+    }
   }
 })
