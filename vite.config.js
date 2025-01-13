@@ -6,6 +6,6 @@ export default defineConfig({
     host: true
   },
   build: {
-    assetsDir: ""
+    assetsDir: "yield-search-ui-themes"
   }
 })
