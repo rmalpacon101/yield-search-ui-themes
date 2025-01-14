@@ -5,5 +5,5 @@ export default defineConfig({
     port: 5173,
     host: true,
   },
-  base: "/yield-search-ui-themes",
+  //base: "/yield-search-ui-themes",
 });
