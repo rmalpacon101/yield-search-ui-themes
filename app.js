@@ -34,7 +34,7 @@ const initSearch = () => {
   const collapsibleFilter = (facet, html) => {
     return html`
       <div
-        class="collapse bg-base-100 rounded-none border-b border-base-100"
+        class="collapse bg-base-100 rounded-none border-b border-base-100 collapse-arrow"
       >
         <input type="checkbox" name="filter-accordion-${facet.field}" />
         <div class="collapse-title text-lg bg-base-200">${facet.title}</div>
