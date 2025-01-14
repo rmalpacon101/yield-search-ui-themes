@@ -1,0 +1,55 @@
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Used Cars Search</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="antialiased">
+    <div id="loader" class="absolute inset-0 bg-base-100 bg-opacity-50 backdrop-blur-sm flex flex-col items-center justify-center pt-8 z-10 hidden">
+        <div class="bg-transparent p-8 flex flex-col items-center">
+            <!-- Spinner -->
+            <div class="loading loading-ring loading-lg"></div>
+            <!-- Loading Text -->
+            <p class="mt-4 text-lg font-semibold">Loading...</p>
+        </div>
+    </div>
+    <div class="drawer">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle drawer" />
+      <div class="drawer-content">
+        <!-- Page content here -->
+        <div class="min-h-screen">
+          <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between lg:justify-end items-center">
+              <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </label>
+            </div>
+          </div>
+          <div class="shadow">
+            <div class="container mx-auto px-4 py-4">
+              <div class="flex gap-2">
+                <div class="flex grow-1 w-full">
+                  <yield-search-box enable-suggestions="false"></yield-search-box>
+                </div>
+                <div class="hidden md:flex flex-col md:flex-row md:items-end gap-2">
+                  <yield-clearall buttontext="Clear"></yield-clearall>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="https://cdn.yieldsearchpro.io/yield-searchpro-ui.js"></script>
+<script src="./app.js" type="module"></script>
+</html>
