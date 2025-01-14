@@ -32,10 +32,9 @@ const initSearch = () => {
   };
 
   const collapsibleFilter = (facet, html) => {
-    const open = facet.field === "price" ? "collapse-open" : "collapse-arrow";
     return html`
       <div
-        class="collapse bg-base-100 rounded-none border-b border-base-100 ${open}"
+        class="collapse bg-base-100 rounded-none border-b border-base-100"
       >
         <input type="checkbox" name="filter-accordion-${facet.field}" />
         <div class="collapse-title text-lg bg-base-200">${facet.title}</div>
@@ -149,7 +148,6 @@ const initSearch = () => {
     },
     filterOptions: {
       templates: [
-        { field: "transmissiontype", template: collapsibleFilter },
         {
           field: "colour",
           template: collapsibleFilter2,
