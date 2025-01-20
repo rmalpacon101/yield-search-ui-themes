@@ -8,7 +8,7 @@ const initSearch = () => {
  * @param {Function} html - A tagged template function to generate HTML.
  * @returns {string} The generated HTML content.
  */
-  const templateContent = (item, html) => {
+  const templateContent = (item, html, components) => {
     const promoted = item.promoted ? "border-blue-500" : "border-base-200";
 
     return html`
@@ -20,8 +20,8 @@ const initSearch = () => {
           />
         </figure>
         <div class="card-body p-4">
-          <h2 class="card-title text-lg font-semibold">${item.title}</h2>
-          <p class="text-sm">${item.displayDescription}</p>
+          <h2 class="card-title text-lg font-semibold">${components.highlight("title", item)}</h2>
+          <p class="text-sm">${components.highlight("description", item)}</p>
           <div class="card-actions justify-between items-end mt-2">
             <div class="text-xl text-primary font-bold">£${item.price}</div>
             <button type="button" class="btn btn-outline">Buy Now</button>
@@ -116,6 +116,7 @@ const initSearch = () => {
     enableQueryString: true,
     limit: 12,
     fields: [],
+    highlight_fields: ["title", "description"],
     clearOptions: {
       label: "Clear",
       onClearClicked: () => {},
