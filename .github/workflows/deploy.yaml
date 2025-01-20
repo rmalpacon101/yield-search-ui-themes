@@ -29,6 +29,7 @@ jobs:
     env:
       VITE_SEARCH_KEY: ${{vars.VITE_SEARCH_KEY}}
       VITE_SEARCH_COLLECTION_ID: ${{vars.VITE_SEARCH_COLLECTION_ID}}
+      VITE_SEARCH_URL: ${{vars.VITE_SEARCH_URL}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
