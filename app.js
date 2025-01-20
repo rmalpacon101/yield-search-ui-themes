@@ -114,7 +114,6 @@ const initSearch = () => {
     apiKey: import.meta.env.VITE_SEARCH_KEY,
     baseUrl: "https://api.yieldsearchpro.io/api/client/search",
     enableQueryString: true,
-    limit: 12,
     fields: [],
     highlight_fields: ["title", "description"],
     clearOptions: {
