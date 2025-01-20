@@ -112,7 +112,7 @@ const initSearch = () => {
   search.init({
     collectionId: import.meta.env.VITE_SEARCH_COLLECTION_ID,
     apiKey: import.meta.env.VITE_SEARCH_KEY,
-    baseUrl: "https://api.yieldsearchpro.io/api/client/search",
+    baseUrl: import.meta.env.VITE_SEARCH_URL,
     enableQueryString: true,
     fields: [],
     highlight_fields: ["title", "description"],
