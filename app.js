@@ -83,9 +83,9 @@ const initSearch = () => {
           />
           <div class="flex flex-1 items-center">
             <div
-              class="w-1/12 pb-1/12 ${colours[
+              class="h-6 w-6 ${colours[
                 value
-              ]} border border-base-300 ml-2"
+              ]} border border-base-300 ml-2 rounded"
             ></div>
             <label for="${field}-${value}" class="yield-filter-body-label">
               ${label || value}
@@ -144,7 +144,7 @@ const initSearch = () => {
       itemSelected: (suggestion) => console.table(suggestion),
       placeholder: "Search for cars...",
       buttonLabel: "Find Cars",
-      enableAutoComplete: false,
+      enableAutoComplete: true,
     },
     filterOptions: {
       templates: [

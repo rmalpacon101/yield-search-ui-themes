@@ -10,6 +10,11 @@
     /*font-style: normal;*/
   }
 }
+@layer components {
+  html:has(.drawer-auto-gutter .drawer-toggle:checked) {
+    scrollbar-gutter: auto;
+  }
+}
 
 body {
   margin: 0;
@@ -33,7 +38,7 @@ yield-search-facet {
 }
 
 yield-search-sort > .yield-search-sort > select {
-  @apply w-full md:w-auto;
+  @apply w-full;
 }
 
 yield-search-box > .yield-search-bar input[type="search"] {
@@ -96,15 +101,11 @@ yield-search-box > .yield-search-bar {
 }
 
 .suggestions-footer {
-  @apply bg-base-200 sticky bottom-0 p-2 flex gap-2 justify-end font-semibold;
-}
-
-.suggestions-footer a {
-  @apply font-bolder;
+  @apply text-sm bg-base-200 sticky bottom-0 p-2 flex gap-2 justify-end;
 }
 
 .suggestions-footer a > span{
-  @apply text-accent font-bolder;
+  @apply text-primary;
 }
 
 .suggestions-content {

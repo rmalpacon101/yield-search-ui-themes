@@ -19,7 +19,7 @@
             <p class="mt-4 text-lg font-semibold">Loading...</p>
         </div>
     </div>
-    <div class="drawer">
+    <div class="drawer drawer-end drawer-auto-gutter">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle drawer" />
       <div class="drawer-content">
         <!-- Page content here -->
@@ -44,6 +44,7 @@
                   <yield-facet facet-field="price" control="dropdown" class="w-full"></yield-facet>
                   <yield-facet facet-field="make" control="dropdown" class="w-full"></yield-facet>
                   <label for="my-drawer" class="btn btn-primary drawer-button">
+                    FILTER & SORT
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                       stroke="currentColor" class="w-6 h-6">
                       <path stroke-linecap="round" stroke-linejoin="round"
@@ -59,7 +60,6 @@
             <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
               <yield-search-total label="vehicles found"></yield-search-total>
               <div class="flex flex-col md:flex-row gap-2">
-                <yield-search-sort></yield-search-sort>
                 <select value="light" class="select select-bordered" onchange="changeTheme(this.value)"
                   aria-label="Theme selector">
                   <option value="">Select Theme</option>
@@ -83,16 +83,20 @@
           </div>
         </div>
       </div>
-      <div class="drawer-side z-50">
+      <div class="drawer-side [scrollbar-width:none] z-[50] h-dvh">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <div class="w-80 min-h-full bg-base-100">
-          <div class="flex justify-between items-center p-2">
-            <header class="text-lg font-semibold">Filters:</header>
+        <div class="w-1/4 h-dvh flex flex-col bg-base-100 z-[1000]">
+          <div class="flex justify-between items-center p-2 shadow mb-1 bg-base-100 sticky z-[1000]">
+            <header class="text-lg font-semibold">Filter & Sort</header>
             <yield-clearall buttontext="Clear"></yield-clearall>
           </div>
           <!-- Sidebar content here -->
-          <div class="flex flex-col w-full gap-2">
+          <div class="flex flex-col h-full w-full gap-2 overflow-x-hidden overflow-auto [scrollbar-width:none] [overscroll-behavior: contain]">
+            <yield-search-sort class="p-1"></yield-search-sort>
             <yield-search-facet class="side-filter flex-col gap-0"></yield-search-facet>
+          </div>
+          <div class="flex justify-end items-center p-2 bg-base-100 z-[1000]">
+            <p class="text-xs">Powered by <a href="https://yieldsearchpro.io" rel="noopener" target="_blank" class="text-primary">Yield Search</a></p>
           </div>
         </div>
       </div>
