@@ -9,18 +9,29 @@ const initSearch = () => {
  * @returns {string} The generated HTML content.
  */
   const templateContent = (item, html, components) => {
-    const promoted = item.promoted ? "border-blue-500" : "border-base-200";
+    const promoted = item.promoted
+      ? html`<div class="absolute right-0 top-0 h-16 w-16">
+          <div
+            class="absolute transform rotate-45 bg-primary text-center text-white font-medium py-1 right-[-35px] top-[32px] w-[170px]"
+          >
+            50% off
+          </div>
+        </div>`
+      : html``;
 
     return html`
-      <div class="card card-bordered shadow-xl ${promoted}">
+      <div class="card card-bordered shadow-xl relative overflow-hidden">
         <figure>
+          ${promoted}
           <img
             alt="${item.title}"
             src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80"
           />
         </figure>
         <div class="card-body p-4">
-          <h2 class="card-title text-lg font-semibold">${components.highlight("title", item)}</h2>
+          <h2 class="card-title text-lg font-semibold">
+            ${components.highlight("title", item)}
+          </h2>
           <p class="text-sm">${components.highlight("description", item)}</p>
           <div class="card-actions justify-between items-end mt-2">
             <div class="text-xl text-primary font-bold">£${item.price}</div>
