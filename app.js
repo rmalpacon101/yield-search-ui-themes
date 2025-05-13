@@ -154,7 +154,7 @@ const initSearch = () => {
       itemSelected: (suggestion) => console.table(suggestion),
       placeholder: "Search for cars...",
       buttonLabel: "Find Cars",
-      enableAutoComplete: false,
+      enableAutoComplete: true,
     },
     filterOptions: {
       templates: [
