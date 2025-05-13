@@ -126,7 +126,6 @@ const initSearch = () => {
     baseUrl: import.meta.env.VITE_SEARCH_URL,
     enableQueryString: true,
     fields: [],
-    highlight_fields: ["title", "description"],
     clearOptions: {
       label: "Clear",
       onClearClicked: () => {},
