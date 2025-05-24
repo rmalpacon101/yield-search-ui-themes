@@ -355,3 +355,5 @@ out-tsc/
 
 storybook-static
 custom-elements.json
+docs/.vitepress/dist
+docs/.vitepress/cache
