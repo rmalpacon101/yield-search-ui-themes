@@ -10,7 +10,7 @@ hero:
       text: Getting Started
       link: /getting-started
     - theme: alt
-      text: API Examples
+      text: API Documentation
       link: /api-examples
 
 features:

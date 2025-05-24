@@ -14,8 +14,7 @@ The collections table displays all your existing collections and provides key in
 The table includes features like a refresh button and an add collection (+) button in the interface for managing collections.
 
 ## Create Collection
-
-[20241224-1006-11.7852569.mp4](20241224-1006-11.7852569.mp4)
+<video src="./20241224-1006-11.7852569.mp4" controls></video>
 
 1. From the top navigation, click on the **collection selector > click on create collection** or click the + button in the collections table to open a add collection panel.
 

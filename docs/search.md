@@ -4,10 +4,18 @@ The Yield SearchPro solution offers a user-friendly interface for optimizing, co
 
 ## Search Result Configuration
 
-- [**Browse](browse.md):** Provides a UI to preview your search result. Configure display preferences, perform crud operations such as uploading new records, deleting or updating individual records.
-- [Filtering and Faceting](filtering-and-faceting.md)**:** Configure filters to allow users **f**ind exactly what they want by choosing specific filtering options.
-- [**Display Fields](display-fields.md):** Select fields to return on the search results.
-- [**Sort Display](sort-display.md):** Allow users to reorder search results based on configured fields.
+[Browse](browse.md): Provides a UI to preview your search result. Configure display preferences, perform crud operations such as uploading new records, deleting or updating individual records.
+
+[Filtering and Faceting](filtering-and-faceting.md)**:** Configure filters to allow users **f**ind exactly what they want by choosing specific filtering options.
+
+[Display Fields](display-fields.md): Select fields to return on the search results.
+
+[Sort Display](sort-display.md): Allow users to reorder search results based on configured fields.
+
+[Pagination](pagination.md): Configure how many results appear per page and enable navigation controls, allowing users to move between pages of search results efficiently.
+
+[Highlighting](highlighting.md): 
+Configure which parts of the search results are visually emphasized by highlighting matching keywords or phrases. This helps users quickly identify relevant information within each result. You can customize which fields are highlighted and adjust the highlight style to fit your site's design.
 
 ## Auto Suggestions
 
@@ -16,20 +24,3 @@ The Yield SearchPro solution offers a user-friendly interface for optimizing, co
 ## Search Rules
 
 [Rules Configuration](rules.md)
-
-## Benefits
-
-- Makes it easier and faster to find information
-- Helps people find new content more easily
-- Saves time when looking for specific things
-- Keeps everything organized and easy to access
-
-All these parts work together to create a search system that's easy to use and works well for everyone.
-
-[Browse](browse.md)
-
-[Display Fields](display-fields.md)
-
-[Filtering and Faceting](filtering-and-faceting.md)
-
-[Sord Display](sort-display.md)

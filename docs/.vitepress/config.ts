@@ -23,11 +23,26 @@ export default defineConfig({
             items: [
               { text: "Browse", link: "/browse" },
               { text: "Display Fields", link: "/display-fields" },
-              { text: "Filtering and Faceting", link: "/filtering-and-faceting" },
+              {
+                text: "Filtering and Faceting",
+                link: "/filtering-and-faceting",
+              },
               { text: "Sort Display", link: "/sort-display" },
+              { text: "Pagination", link: "/pagination" },
+              { text: "Highlighting", link: "/highlighting" },
             ],
           },
-          { text: "Relevance Configuration", link: "/relevance" },
+          {
+            text: "Relevance Configuration",
+            link: "/relevance",
+            items: [
+              { text: "Global Filters", link: "/global-filters" },
+              { text: "Sort Ranking", link: "/sort-ranking" },
+              { text: "Searchable Fields", link: "/searchable-fields" },
+              { text: "Synonyms", link: "/synonyms" },
+            ],
+          },
+          { text: "Auto Suggestions", link: "/auto-suggestion" },
           { text: "Rules", link: "/rules" },
         ],
       },
