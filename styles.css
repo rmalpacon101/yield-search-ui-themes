@@ -55,7 +55,26 @@ yield-search-sort > div > select {
 }
 
 yield-search-result {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+  width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  yield-search-result {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  yield-search-result {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+yield-search-result > div {
+  display: block !important;
 }
 
 yield-search-result div.empty-result {
@@ -196,30 +215,421 @@ yield-search-box > .yield-search-bar {
   @apply text-sm;
 }
 
-.collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-content) {
+.products-page .collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-content) {
   @apply pb-0;
 }
 
+/* Modern scrollbar styling - Currys style */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-base-100;
+  background: #f8f9fa;
+  border-radius: 4px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
+  background: #c1c7cd;
+  border-radius: 4px;
+  transition: background 0.2s;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #9ca3af;
 }
 
+/* Products page specific scrollbar for filter containers */
+.products-page #filters-container::-webkit-scrollbar,
+.products-page #mobile-filters-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.products-page #filters-container::-webkit-scrollbar-track,
+.products-page #mobile-filters-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.products-page #filters-container::-webkit-scrollbar-thumb,
+.products-page #mobile-filters-container::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.products-page #filters-container::-webkit-scrollbar-thumb:hover,
+.products-page #mobile-filters-container::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Product listing specific styles */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Product card hover effects */
+.card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Filter collapse styling - SCOPED TO PRODUCTS PAGE */
+.products-page .collapse .collapse-title {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.products-page .collapse.collapse-open .collapse-title {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Custom checkbox styling for filters - SCOPED TO PRODUCTS PAGE */
+.products-page .checkbox:checked {
+  @apply border-primary bg-primary;
+}
+
+/* Mobile filter button animation */
+.btn-circle {
+  transition: all 0.3s ease;
+}
+
+.btn-circle:hover {
+  transform: scale(1.1);
+}
+
+/* Search result stats styling */
+yield-search-results-stats {
+  @apply text-gray-600;
+}
+
+/* Search sort styling */
+yield-search-sort select {
+  @apply select select-bordered w-full;
+}
+
+/* Search pagination styling */
+yield-search-pagination {
+  @apply flex justify-center;
+}
+
+/* Custom badge styling */
+.badge-success {
+  @apply bg-green-100 text-green-800 border-green-200;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+}
+
+.badge-secondary {
+  @apply bg-red-500 text-white;
+}
+
+/* Product grid specific styling - Modern 3-column responsive grid like Currys - SCOPED TO PRODUCTS PAGE */
+.products-page #products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0;
+  min-height: 400px;
+}
+
+/* Responsive breakpoints for better layout - SCOPED TO PRODUCTS PAGE */
+@media (max-width: 640px) {
+  .products-page #products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .products-page #products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .products-page #products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Make yield-search-result transparent and pass through grid items - SCOPED TO PRODUCTS PAGE */
+.products-page yield-search-result {
+  display: contents !important;
+}
+
+.products-page yield-search-result > div {
+  display: contents !important;
+}
+
+/* Ensure each product card takes one grid cell and has proper structure - SCOPED TO PRODUCTS PAGE */
+.products-page yield-search-result .product-card {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Modern Currys-inspired product card styling using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card {
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 0.5rem;
+  background-color: white;
+  height: 550px; /* Fixed height for perfect alignment */
+}
+
+.products-page .product-card:hover {
+  @apply shadow-xl border-gray-300;
+}
+
+/* Product card image container using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .image-container {
+  @apply relative bg-gray-50 p-5 flex items-center justify-center;
+  min-height: 200px;
+  max-height: 200px;
+}
+
+/* Product images using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card img {
+  @apply w-full h-auto object-contain transition-transform duration-200;
+  max-width: 180px; /* Custom value since max-w-45 doesn't exist */
+}
+
+.products-page .product-card:hover img {
+  @apply scale-105;
+}
+
+/* Product card content using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .content {
+  @apply p-4 flex-1 flex flex-col;
+  height: 350px;
+}
+
+/* Content top section using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .content-top {
+  @apply flex flex-col overflow-hidden;
+  height: 200px;
+}
+
+/* Product title using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .title {
+  @apply text-base leading-5 font-semibold text-gray-900 overflow-hidden;
+  margin: 0 0 2px 0;
+  height: 44px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Brand name using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .brand {
+  @apply text-sm text-gray-600 font-semibold uppercase tracking-wide mb-2;
+}
+
+/* Key features using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .features {
+  @apply list-none p-0 text-sm text-gray-600 leading-6 flex-1 overflow-hidden;
+  margin: 6px 0;
+  max-height: 85px;
+}
+
+.products-page .product-card .features li {
+  @apply mb-1;
+}
+
+.products-page .product-card .features li:before {
+  content: "•";
+  @apply text-gray-400 mr-2;
+}
+
+/* Price section using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .price-section {
+  @apply pt-3 flex flex-col justify-end mt-auto;
+  height: 150px;
+}
+
+.products-page .product-card .price {
+  @apply text-lg font-semibold text-gray-900 mb-2 h-6 flex items-center;
+}
+
+.products-page .product-card .original-price {
+  @apply text-sm text-gray-500 line-through ml-2;
+}
+
+/* Savings badge using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .savings {
+  @apply text-sm text-red-600 font-semibold mb-2 h-5 flex items-center;
+}
+
+/* Stock status using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .stock-status {
+  @apply text-sm text-blue-600 font-semibold mb-3 leading-5 flex items-start;
+  height: 36px;
+}
+
+.products-page .product-card .stock-status.out-of-stock {
+  @apply text-gray-500;
+}
+
+/* Action buttons using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .actions {
+  @apply flex gap-2 items-stretch;
+  height: 48px;
+}
+
+.products-page .product-card .btn-view {
+  @apply flex-1 px-4 py-3 text-sm font-semibold border-2 border-blue-600 text-blue-600 rounded cursor-pointer transition-all duration-200 text-center no-underline;
+  background-color: white;
+}
+
+.products-page .product-card .btn-view:hover {
+  @apply bg-blue-600 text-white;
+}
+
+.products-page .product-card .btn-cart {
+  @apply flex-1 px-4 py-3 text-sm font-semibold border-2 border-blue-600 bg-blue-600 text-white rounded cursor-pointer transition-all duration-200 text-center;
+}
+
+.products-page .product-card .btn-cart:hover {
+  @apply bg-blue-700 border-blue-700;
+}
+
+/* Discount badge using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-badge {
+  @apply absolute top-3 left-3 bg-red-600 text-white px-2 py-1 rounded text-xs font-semibold uppercase tracking-wide z-10;
+}
+
+/* Rating using Tailwind - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .rating {
+  @apply flex items-center gap-2 text-sm text-gray-600 my-2;
+}
+
+.products-page .product-card .rating .stars {
+  @apply flex gap-1;
+}
+
+.products-page .product-card .rating .star {
+  @apply w-4 h-4 fill-yellow-400;
+}
+
+.products-page .product-card .rating .star.empty {
+  @apply fill-gray-300;
+}
+
+/* Filter container styling - SCOPED TO PRODUCTS PAGE */
+.products-page #filters-container .collapse-content {
+  @apply px-0;
+}
+
+/* Force grid layout for search results - SCOPED TO PRODUCTS PAGE */
+.products-page yield-search-result * {
+  box-sizing: border-box;
+}
+
+/* Override any flex or other display properties - SCOPED TO PRODUCTS PAGE */
+.products-page yield-search-result .product-card {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Ensure empty results span full width - SCOPED TO PRODUCTS PAGE */
+.products-page yield-search-result .col-span-full {
+  grid-column: 1 / -1 !important;
+}
+
+/* Empty results styling - SCOPED TO PRODUCTS PAGE */
+.products-page yield-search-result .empty-result {
+  grid-column: 1 / -1 !important;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6b7280;
+}
+
+/* Loading state - SCOPED TO PRODUCTS PAGE */
+.products-page #products-grid.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Ensure grid items don't overflow - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card * {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Button styling improvements - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .btn {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.products-page .product-card .btn-primary {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+.products-page .product-card .btn-primary:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.products-page .product-card .btn-outline {
+  border: 1px solid #d1d5db;
+  color: #374151;
+  background: white;
+}
+
+.products-page .product-card .btn-outline:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Stock badge styling - SCOPED TO PRODUCTS PAGE */
+.products-page .product-card .badge-success {
+  background-color: #10b981;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.products-page .product-card .badge-warning {
+  background-color: #f59e0b;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* General hit styles for other pages (not products) */
 .hit {
   @apply card card-bordered shadow-xl;
 }
@@ -238,4 +648,326 @@ yield-search-box > .yield-search-bar {
 
 .hit .hit-content .hit-actions {
   @apply card-actions justify-between items-end mt-2;
+}
+
+/* Filter Headers - Currys Style Collapsible - UPDATED TO MATCH EDGE-TO-EDGE DESIGN */
+.products-page .filter-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.products-page .filter-chevron {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  transition: transform 0.2s;
+}
+
+.products-page .filter-section.collapsed .filter-chevron {
+  transform: rotate(180deg);
+}
+
+.products-page .filter-section.collapsed .filter-content {
+  display: none;
+}
+
+/* Filter Search Container - Currys Style */
+.products-page .filter-search-container {
+  position: relative;
+  margin-bottom: 18px;
+  margin-top: 16px;
+}
+
+.products-page .filter-search-input {
+  width: 100%;
+  padding: 10px 18px 10px 44px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #fafafa;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.products-page .filter-search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.products-page .filter-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+}
+
+/* Filter Options Spacing */
+.products-page .filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.products-page .filter-options.with-search {
+  margin-top: 0;
+}
+
+/* Filter Items - Currys Style */
+.products-page .filter-item {
+  display: block;
+}
+
+.products-page .filter-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.products-page .filter-checkbox:hover {
+  background-color: #f9fafb;
+}
+
+.products-page .filter-input {
+  width: 18px;
+  height: 18px;
+  color: #3b82f6;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  margin-right: 14px;
+}
+
+.products-page .filter-input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.products-page .filter-label {
+  font-size: 14px;
+  color: #374151;
+  flex: 1;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.products-page .filter-count {
+  font-size: 13px;
+  color: #6b7280;
+  margin-left: auto;
+  font-weight: 400;
+}
+
+/* Ensure filter facets display as block elements */
+.products-page yield-search-facet {
+  display: block;
+  width: 100%;
+}
+
+.products-page #filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.products-page #mobile-filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* Override any inline display for filter sections */
+.products-page .filter-section {
+  display: block !important;
+  width: 100%;
+  clear: both;
+  background-color: white;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.products-page .filter-section:first-child {
+  margin-top: 0;
+}
+
+.products-page .filter-section:last-child {
+  border-bottom: none;
+}
+
+/* Ensure the filter headers are truly edge-to-edge */
+.products-page .filter-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px !important;
+  background-color: white;
+  border-bottom: none;
+  text-align: left;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: background-color 0.2s;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.products-page .filter-header:hover {
+  background-color: #f9fafb;
+}
+
+.products-page .filter-content {
+  padding: 0 16px 24px 16px !important;
+}
+
+/* Ensure parent containers don't use flexbox horizontally */
+.products-page yield-search-facet > * {
+  display: block;
+  width: 100%;
+}
+
+/* Override yield-facet styling to match our custom filters */
+.products-page yield-facet {
+  display: block;
+}
+
+.products-page yield-facet .facet-item,
+.products-page yield-facet .facet-option {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.products-page yield-facet label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.products-page yield-facet label:hover {
+  background-color: #f9fafb;
+}
+
+.products-page yield-facet input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  color: #3b82f6;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  margin-right: 14px;
+}
+
+.products-page yield-facet input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.products-page yield-facet .facet-label {
+  font-size: 14px;
+  color: #374151;
+  flex: 1;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.products-page yield-facet .facet-count {
+  font-size: 13px;
+  color: #6b7280;
+  margin-left: auto;
+  font-weight: 400;
+}
+
+/* Remove padding from filter container parents - SCOPED TO PRODUCTS PAGE */
+.products-page .drawer-side {
+  padding: 0 !important;
+}
+
+.products-page .drawer-side > div {
+  padding: 0 !important;
+}
+
+.products-page .side-filter {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* TARGET THE MAIN FILTER SIDEBAR CONTAINER - REMOVE PADDING FOR EDGE-TO-EDGE LOOK */
+.products-page aside > div {
+  padding: 0 !important;
+}
+
+/* Remove border radius and border for flat Currys-style appearance */
+.products-page aside > div[class*="rounded"] {
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* Ensure all filter parent containers have no padding */
+.products-page #filters-container,
+.products-page #mobile-filters-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Override any default padding on filter wrapper divs */
+.products-page .filters-wrapper,
+.products-page .filter-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Target all possible parent containers */
+.products-page .drawer-content,
+.products-page .drawer,
+.products-page .container,
+.products-page .sidebar,
+.products-page .filter-sidebar,
+.products-page .sidebar-content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Ensure filter headers extend to full width */
+.products-page .filter-header {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+/* Override any padding on all divs within filter containers */
+.products-page #filters-container > *,
+.products-page #mobile-filters-container > * {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Add padding back to filter content for proper spacing */
+.products-page .filter-content {
+  padding: 0 16px 24px 16px !important;
+}
+
+/* Style the filters header section to match Currys */
+.products-page aside > div > div:first-child {
+  padding: 16px !important;
+  border-bottom: 1px solid #f3f4f6;
 }

@@ -46,8 +46,6 @@ The table includes features like a refresh button and an add collection (+) butt
 
 ## Manage Collection
 
-![image.png](image%208.png)
-
 ### **Purge Documents**
 
 The Purge Documents feature allows you to delete all documents within a collection. Important considerations:
