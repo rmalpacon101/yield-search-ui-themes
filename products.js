@@ -310,8 +310,8 @@ const initProductSearch = () => {
 
   // Initialize search component
   search.init({
-    collectionId: import.meta.env.VITE_SEARCH_COLLECTION_ID_1,
-    apiKey: import.meta.env.VITE_SEARCH_KEY_1,
+    collectionId: import.meta.env.VITE_SEARCH_COLLECTION_ID_SKU,
+    apiKey: import.meta.env.VITE_SEARCH_KEY_SKU,
     baseUrl: import.meta.env.VITE_SEARCH_URL,
     enableQueryString: true,
     fields: ["*"], // Request all fields to ensure we get the facet data

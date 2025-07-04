@@ -49,8 +49,8 @@ jobs:
       VITE_SEARCH_KEY: ${{vars.VITE_SEARCH_KEY}}
       VITE_SEARCH_COLLECTION_ID: ${{vars.VITE_SEARCH_COLLECTION_ID}}
       VITE_SEARCH_URL: ${{vars.VITE_SEARCH_URL}}
-      VITE_SEARCH_KEY_1: ${{vars.VITE_SEARCH_KEY_1}}
-      VITE_SEARCH_COLLECTION_ID_1: ${{vars.VITE_SEARCH_COLLECTION_ID_1}}
+      VITE_SEARCH_KEY_SKU: ${{vars.VITE_SEARCH_KEY_SKU}}
+      VITE_SEARCH_COLLECTION_ID_SKU: ${{vars.VITE_SEARCH_COLLECTION_ID_SKU}}
     runs-on: ubuntu-latest
     needs: build
     steps:
