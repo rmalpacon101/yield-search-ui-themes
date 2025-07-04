@@ -45,6 +45,12 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      VITE_SEARCH_KEY: ${{vars.VITE_SEARCH_KEY}}
+      VITE_SEARCH_COLLECTION_ID: ${{vars.VITE_SEARCH_COLLECTION_ID}}
+      VITE_SEARCH_URL: ${{vars.VITE_SEARCH_URL}}
+      VITE_SEARCH_KEY_1: ${{vars.VITE_SEARCH_KEY_1}}
+      VITE_SEARCH_COLLECTION_ID_1: ${{vars.VITE_SEARCH_COLLECTION_ID_1}}
     runs-on: ubuntu-latest
     needs: build
     steps:
