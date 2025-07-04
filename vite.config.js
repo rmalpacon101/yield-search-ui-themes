@@ -6,8 +6,8 @@ export default defineConfig({
     port: 5173,
     host: true,
   },
-  // Update this to match your GitHub repository name
-  base: "/yield-search-ui-themes/",
+  // Since the site is deployed at the root domain, no base path needed
+  // base: "/yield-search-ui-themes/",
   build: {
     rollupOptions: {
       input: {
