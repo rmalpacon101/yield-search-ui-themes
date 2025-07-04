@@ -1,0 +1,145 @@
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo 1 - Yield Search</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="antialiased">
+    <div id="loader" class="absolute inset-0 bg-base-100 bg-opacity-50 backdrop-blur-sm flex flex-col items-center justify-center pt-8 z-10 hidden">
+        <div class="bg-transparent p-8 flex flex-col items-center">
+            <!-- Spinner -->
+            <div class="loading loading-ring loading-lg"></div>
+            <!-- Loading Text -->
+            <p class="mt-4 text-lg font-semibold">Loading...</p>
+        </div>
+    </div>
+    <div class="drawer drawer-end drawer-auto-gutter">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle drawer" />
+      <div class="drawer-content">
+        <!-- Navigation -->
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
+          <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+              <div class="flex items-center space-x-8">
+                <h1 class="text-xl font-bold text-gray-900">Yield Search Demo</h1>
+                <div class="hidden md:flex space-x-6">
+                  <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                  <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors">Products</a>
+                  <a href="search-box.html" class="text-gray-600 hover:text-blue-600 transition-colors">Search Box</a>
+                  <a href="demo1.html" class="text-blue-600 font-medium">Demo 1</a>
+                </div>
+              </div>
+              <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </label>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Page content here -->
+        <div class="min-h-screen">
+          <div class="shadow">
+            <div class="container mx-auto px-4 py-4">
+              <div class="flex flex-col md:flex-row gap-2">
+                <div class="flex items-end w-full">
+                  <yield-search-box enable-suggestions="false"></yield-search-box>
+                </div>
+                <div class="hidden md:flex flex-col md:flex-row md:items-end gap-2 w-full">
+                  <yield-facet facet-field="price" control="dropdown" class="w-full"></yield-facet>
+                  <yield-facet facet-field="make" control="dropdown" class="w-full"></yield-facet>
+                  <label for="my-drawer" class="btn btn-primary drawer-button">
+                    FILTER & SORT
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                      stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                  </label>
+                  <yield-clearall buttontext="Clear"></yield-clearall>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <yield-search-total label="vehicles found"></yield-search-total>
+              <div class="flex flex-col md:flex-row gap-2">
+                <select value="light" class="select select-bordered" onchange="changeTheme(this.value)"
+                  aria-label="Theme selector">
+                  <option value="">Select Theme</option>
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                  <option value="corporate">Corporate</option>
+                  <option value="cupcake">Cupcake</option>
+                  <option value="emerald">Emerald</option>
+                  <option value="dracula">Dracula</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="container mx-auto px-4 pb-8">
+            <div class="my-5">
+              <yield-search-result></yield-search-result>
+            </div>
+            <div class="my-5 flex justify-center">
+              <yield-search-pagination></yield-search-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-side [scrollbar-width:none] z-[50] h-dvh">
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <div class="w-5/6 lg:w-1/4 h-dvh flex flex-col bg-base-100 z-[1000]">
+          <div class="flex justify-between items-center p-2 shadow mb-1 bg-base-100 sticky z-[1000]">
+            <header class="text-lg font-semibold">Filter & Sort</header>
+            <yield-clearall buttontext="Clear"></yield-clearall>
+          </div>
+          <!-- Sidebar content here -->
+          <div class="flex flex-col h-full w-full gap-2 overflow-x-hidden overflow-auto [scrollbar-width:none] [overscroll-behavior: contain]">
+            <yield-search-sort class="p-1"></yield-search-sort>
+            <yield-search-facet class="side-filter flex-col gap-0"></yield-search-facet>
+          </div>
+          <div class="flex justify-end items-center p-2 bg-base-100 z-[1000]">
+            <p class="text-xs">Powered by <a href="https://yieldsearchpro.io" rel="noopener" target="_blank" class="text-primary">Yield Search</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="https://cdn.yieldsearchpro.io/yield-searchpro-ui.js?v=3"></script>
+<script src="./app.js?v=3" type="module"></script>
+<script>
+
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    function changeTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const url = new URL(window.location);
+        url.searchParams.set('theme', theme);
+        window.location.href = url.toString();
+    }
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+
+        const theme = getParameterByName('theme') || 'light';
+        document.body.setAttribute('data-theme', theme);
+        document.querySelector('select').value = theme;
+    });
+</script>
+
+</html>

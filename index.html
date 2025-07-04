@@ -1,145 +1,177 @@
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yield Search Demo</title>
+    <title>Yield Search Demo - Home</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
-        rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css">
 </head>
 
-<body class="antialiased">
-    <div id="loader" class="absolute inset-0 bg-base-100 bg-opacity-50 backdrop-blur-sm flex flex-col items-center justify-center pt-8 z-10 hidden">
-        <div class="bg-transparent p-8 flex flex-col items-center">
-            <!-- Spinner -->
-            <div class="loading loading-ring loading-lg"></div>
-            <!-- Loading Text -->
-            <p class="mt-4 text-lg font-semibold">Loading...</p>
-        </div>
-    </div>
-    <div class="drawer drawer-end drawer-auto-gutter">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle drawer" />
-      <div class="drawer-content">
-        <!-- Navigation -->
-        <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
-          <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-              <div class="flex items-center space-x-8">
-                <h1 class="text-xl font-bold text-gray-900">Yield Search Demo</h1>
-                <div class="hidden md:flex space-x-6">
-                  <a href="index.html" class="text-blue-600 font-medium">Home</a>
-                  <a href="products.html" class="text-gray-600 hover:text-blue-600 transition-colors">Products</a>
-                  <a href="search-box.html" class="text-gray-600 hover:text-blue-600 transition-colors">Search Box</a>
-                  <a href="demo-index.html" class="text-gray-600 hover:text-blue-600 transition-colors">Demo</a>
-                </div>
-              </div>
-              <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-              </label>
+<body class="antialiased bg-base-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-4 py-8 max-w-4xl">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Yield Search UI Demos</h1>
+                <p class="text-lg text-gray-600">Choose a demo to explore the search capabilities</p>
             </div>
-          </div>
-        </nav>
 
-        <!-- Page content here -->
-        <div class="min-h-screen">
-          <div class="shadow">
-            <div class="container mx-auto px-4 py-4">
-              <div class="flex flex-col md:flex-row gap-2">
-                <div class="flex items-end w-full">
-                  <yield-search-box enable-suggestions="false"></yield-search-box>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Original Demo -->
+                <div class="card bg-white shadow-xl border border-gray-200">
+                    <div class="card-body p-8">
+                        <h2 class="card-title text-2xl font-semibold mb-4 text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-blue-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0V5.25a1.5 1.5 0 013 0v13.5zM15.75 18.75a1.5 1.5 0 01-3 0V5.25a1.5 1.5 0 013 0v13.5z" />
+                            </svg>
+                            Original Search Demo
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            The original search implementation with drawer-based filters and basic card layout.
+                        </p>
+                        <div class="card-actions">
+                            <a href="./demo1.html" class="btn btn-primary btn-block">
+                                View Original Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="hidden md:flex flex-col md:flex-row md:items-end gap-2 w-full">
-                  <yield-facet facet-field="price" control="dropdown" class="w-full"></yield-facet>
-                  <yield-facet facet-field="make" control="dropdown" class="w-full"></yield-facet>
-                  <label for="my-drawer" class="btn btn-primary drawer-button">
-                    FILTER & SORT
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                      stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                  </label>
-                  <yield-clearall buttontext="Clear"></yield-clearall>
+
+                <!-- Product Listing Demo -->
+                <div class="card bg-white shadow-xl border border-gray-200">
+                    <div class="card-body p-8">
+                        <h2 class="card-title text-2xl font-semibold mb-4 text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-green-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-2.836A3 3 0 008.25 4.5H15.75a3 3 0 01.75 2.014 3.001 3.001 0 003.75 2.836m-16.5 11.65a3.001 3.001 0 01-3.75-2.836A3.001 3.001 0 014.5 16.349V4.5a3 3 0 013-3H15.75a3 3 0 013 3v11.849m-15 11.65V9.35m0 0a3.001 3.001 0 013.75-2.836A3 3 0 008.25 4.5H15.75a3 3 0 01.75 2.014 3.001 3.001 0 003.75 2.836M3 16.35v5.4" />
+                            </svg>
+                            Product Listing
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            A comprehensive product listing page with sidebar filters, detailed product cards, ratings, and e-commerce features.
+                        </p>
+                        <div class="card-actions">
+                            <a href="./products.html" class="btn btn-success btn-block">
+                                View Product Listing
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                <!-- Search Box Demo -->
+                <div class="card bg-white shadow-xl border border-gray-200">
+                    <div class="card-body p-8">
+                        <h2 class="card-title text-2xl font-semibold mb-4 text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-purple-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                            Search Box Only
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            A minimal search box implementation focusing on search functionality and auto-suggestions.
+                        </p>
+                        <div class="card-actions">
+                            <a href="./search-box.html" class="btn btn-secondary btn-block">
+                                View Search Box
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentation -->
+                <div class="card bg-white shadow-xl border border-gray-200">
+                    <div class="card-body p-8">
+                        <h2 class="card-title text-2xl font-semibold mb-4 text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-orange-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                            Documentation
+                        </h2>
+                        <p class="text-gray-600 mb-6">
+                            Comprehensive documentation for all the search components and implementation guides.
+                        </p>
+                        <div class="card-actions">
+                            <a href="./docs/" class="btn btn-warning btn-block">
+                                View Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="container mx-auto px-4 py-4">
-            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <yield-search-total label="vehicles found"></yield-search-total>
-              <div class="flex flex-col md:flex-row gap-2">
-                <select value="light" class="select select-bordered" onchange="changeTheme(this.value)"
-                  aria-label="Theme selector">
-                  <option value="">Select Theme</option>
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
-                  <option value="corporate">Corporate</option>
-                  <option value="cupcake">Cupcake</option>
-                  <option value="emerald">Emerald</option>
-                  <option value="dracula">Dracula</option>
-                </select>
-              </div>
+
+            <!-- Features Overview -->
+            <div class="mt-16 bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-center">Product Listing Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Sidebar Filters</h4>
+                            <p class="text-sm text-gray-600">Left sidebar with collapsible filter categories</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Mobile Responsive</h4>
+                            <p class="text-sm text-gray-600">Floating filter button with slide-out drawer</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Rich Product Cards</h4>
+                            <p class="text-sm text-gray-600">Images, ratings, prices, and discount badges</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Search Highlighting</h4>
+                            <p class="text-sm text-gray-600">Highlighted search terms in results</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Sort & Pagination</h4>
+                            <p class="text-sm text-gray-600">Multiple sort options and paginated results</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-full">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">E-commerce Ready</h4>
+                            <p class="text-sm text-gray-600">Add to cart and view product functionality</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="container mx-auto px-4 pb-8">
-            <div class="my-5">
-              <yield-search-result></yield-search-result>
-            </div>
-            <div class="my-5 flex justify-center">
-              <yield-search-pagination></yield-search-pagination>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="drawer-side [scrollbar-width:none] z-[50] h-dvh">
-        <label for="my-drawer" class="drawer-overlay"></label>
-        <div class="w-5/6 lg:w-1/4 h-dvh flex flex-col bg-base-100 z-[1000]">
-          <div class="flex justify-between items-center p-2 shadow mb-1 bg-base-100 sticky z-[1000]">
-            <header class="text-lg font-semibold">Filter & Sort</header>
-            <yield-clearall buttontext="Clear"></yield-clearall>
-          </div>
-          <!-- Sidebar content here -->
-          <div class="flex flex-col h-full w-full gap-2 overflow-x-hidden overflow-auto [scrollbar-width:none] [overscroll-behavior: contain]">
-            <yield-search-sort class="p-1"></yield-search-sort>
-            <yield-search-facet class="side-filter flex-col gap-0"></yield-search-facet>
-          </div>
-          <div class="flex justify-end items-center p-2 bg-base-100 z-[1000]">
-            <p class="text-xs">Powered by <a href="https://yieldsearchpro.io" rel="noopener" target="_blank" class="text-primary">Yield Search</a></p>
-          </div>
-        </div>
-      </div>
     </div>
 </body>
-<script src="https://cdn.yieldsearchpro.io/yield-searchpro-ui.js?v=3"></script>
-<script src="./app.js?v=3" type="module"></script>
-<script>
-
-    function getParameterByName(name, url = window.location.href) {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    function changeTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        const url = new URL(window.location);
-        url.searchParams.set('theme', theme);
-        window.location.href = url.toString();
-    }
-
-    document.addEventListener("DOMContentLoaded", (event) => {
-
-        const theme = getParameterByName('theme') || 'light';
-        document.body.setAttribute('data-theme', theme);
-        document.querySelector('select').value = theme;
-    });
-</script>
-
 </html>

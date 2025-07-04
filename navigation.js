@@ -21,8 +21,8 @@ function createNavigation(currentPage = '') {
                 <a href="search-box.html" class="nav-link ${currentPage === 'search-box' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-blue-600'}">
                   Search Box
                 </a>
-                <a href="demo-index.html" class="nav-link ${currentPage === 'demo' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-blue-600'}">
-                  Demo
+                <a href="demo1.html" class="nav-link ${currentPage === 'demo1' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-blue-600'}">
+                  Demo 1
                 </a>
               </div>
             </div>
@@ -50,8 +50,8 @@ function createNavigation(currentPage = '') {
             <a href="search-box.html" class="nav-link block px-3 py-2 text-base font-medium ${currentPage === 'search-box' ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">
               Search Box
             </a>
-            <a href="demo-index.html" class="nav-link block px-3 py-2 text-base font-medium ${currentPage === 'demo' ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">
-              Demo
+            <a href="demo1.html" class="nav-link block px-3 py-2 text-base font-medium ${currentPage === 'demo1' ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">
+              Demo 1
             </a>
           </div>
         </div>
@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPage = 'products';
   } else if (currentPath.includes('search-box.html')) {
     currentPage = 'search-box';
-  } else if (currentPath.includes('demo-index.html')) {
-    currentPage = 'demo';
+  } else if (currentPath.includes('demo1.html')) {
+    currentPage = 'demo1';
   } else {
     currentPage = 'home';
   }
