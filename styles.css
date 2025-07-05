@@ -540,7 +540,7 @@ yield-search-pagination {
 
 /* Custom action buttons - SCOPED TO PRODUCTS PAGE */
 .products-page .custom-actions {
-  @apply flex flex-col md:flex-row justify-end;
+  @apply flex flex-col md:flex-row justify-end gap-1;
 }
 
 .products-page .custom-btn-primary {
