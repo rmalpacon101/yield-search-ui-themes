@@ -23,12 +23,12 @@ const initProductSearch = () => {
     
     const stars = html`
       ${Array(fullStars).fill(0).map(() => html`
-        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+        <svg class="w-4 h-4 text-warning fill-current" viewBox="0 0 20 20">
           <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
         </svg>
       `)}
       ${hasHalfStar ? html`
-        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+        <svg class="w-4 h-4 text-warning fill-current" viewBox="0 0 20 20">
           <defs>
             <linearGradient id="half-star">
               <stop offset="50%" stop-color="currentColor"/>
@@ -39,103 +39,104 @@ const initProductSearch = () => {
         </svg>
       ` : ''}
       ${Array(emptyStars).fill(0).map(() => html`
-        <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20">
+        <svg class="w-4 h-4 text-base-content/20 fill-current" viewBox="0 0 20 20">
           <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
         </svg>
       `)}
     `;
 
     const stockStatus = item.availability_status === 'In Stock' 
-      ? html`<span class="badge badge-success badge-sm">In Stock</span>`
-      : html`<span class="badge badge-warning badge-sm">${item.availability_status}</span>`;
+      ? html`<span class="custom-badge-success">In Stock</span>`
+      : html`<span class="custom-badge-warning">${item.availability_status}</span>`;
 
     const discountBadge = item.discount_percentage 
       ? html`
-        <div class="product-badge">
+        <div class="custom-product-badge">
           -${item.discount_percentage.toFixed(0)}%
         </div>`
       : '';
 
     return html`
-      <div class="product-card">
-        <div class="image-container">
+      <div class="custom-product-card">
+        <figure class="custom-image-container">
           ${discountBadge}
           <img
             src="${item.thumbnail || item.images?.[0] || 'https://via.placeholder.com/180x160?text=No+Image'}"
             alt="${item.title}"
+            class="custom-product-image"
             onerror="this.src='https://via.placeholder.com/180x160?text=No+Image'"
           />
-        </div>
+        </figure>
         
-        <div class="content">
-          <div class="content-top">
-            <h3 class="title">
+        <div class="custom-content">
+          <div class="custom-content-top">
+            <h3 class="custom-title">
               ${components.highlight("title", item)}
             </h3>
             
             <!-- Brand - only show if exists to avoid whitespace -->
             ${item.brand ? html`
-              <div class="brand">${components.highlight("brand", item)}</div>
+              <div class="custom-brand">${components.highlight("brand", item)}</div>
             ` : ''}
             
             <!-- Key Features (like Currys product specs) -->
             ${item.features && item.features.length > 0 ? html`
-              <ul class="features">
+              <ul class="custom-features">
                 ${item.features.slice(0, 4).map(feature => html`
                   <li>${feature}</li>
                 `)}
               </ul>
             ` : item.description ? html`
-              <ul class="features">
+              <ul class="custom-features">
                 <li>${item.description.slice(0, 60)}${item.description.length > 60 ? '...' : ''}</li>
               </ul>
             ` : ''}
             
             <!-- Rating (minimal) -->
             ${rating > 0 ? html`
-              <div class="rating">
-                <div class="stars">
+              <div class="custom-rating">
+                <div class="custom-stars">
                   ${Array(fullStars).fill(0).map(() => html`
-                    <svg class="star" viewBox="0 0 20 20">
+                    <svg class="custom-star" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   `)}
                   ${Array(emptyStars).fill(0).map(() => html`
-                    <svg class="star empty" viewBox="0 0 20 20">
+                    <svg class="custom-star custom-star-empty" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   `)}
                 </div>
-                <span>(${rating.toFixed(1)})</span>
+                <span class="custom-rating-text">(${rating.toFixed(1)})</span>
               </div>
             ` : ''}
           </div>
           
-          <div class="price-section">
+          <div class="custom-price-section">
             <!-- Savings message -->
-            <div class="savings">
-              ${item.discount_percentage ? `Save £${(originalPrice - discountedPrice).toFixed(2)}` : ''}
+            <div class="custom-savings">
+              ${item.discountPercentage ? `Save £${(originalPrice - discountedPrice).toFixed(2)}` : ''}
             </div>
             
             <!-- Price -->
-            <div class="price">
+            <div class="custom-price">
               £${discountedPrice}
-              ${item.discount_percentage ? html`
-                <span class="original-price">£${originalPrice.toFixed(2)}</span>
+              ${item.discountPercentage ? html`
+                <span class="custom-original-price">£${originalPrice.toFixed(2)}</span>
               ` : ''}
             </div>
             
             <!-- Stock Status -->
-            <div class="stock-status ${item.availability_status !== 'In Stock' ? 'out-of-stock' : ''}">
-              ${item.availability_status === 'In Stock' ? 'FREE in-store collection in as little as 1 hour' : item.availability_status}
+            <div class="custom-stock-status ${item.availabilityStatus !== 'In Stock' ? 'out-of-stock' : ''}">
+              ${item.availabilityStatus === 'In Stock' ? 'FREE in-store collection in as little as 1 hour' : item.availabilityStatus}
             </div>
             
             <!-- Action Buttons -->
-            <div class="actions">
-              <button class="btn-view" onclick="viewProduct('${item.id}')">
+            <div class="custom-actions">
+              <button class="custom-btn-outline" onclick="viewProduct('${item.id}')">
                 View product
               </button>
-              <button class="btn-cart" onclick="addToCart('${item.id}')">
+              <button class="custom-btn-primary" onclick="addToCart('${item.id}')">
                 Add to basket
               </button>
             </div>
@@ -185,7 +186,7 @@ const initProductSearch = () => {
     });
     
     return html`
-      <div class="filter-section">
+      <div class="filter-section collapsed">
         <button class="filter-header" onclick="toggleFilter(this)">
           <span class="filter-title">${title}</span>
           <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -230,7 +231,7 @@ const initProductSearch = () => {
     });
 
     return html`
-      <div class="filter-section">
+      <div class="filter-section collapsed">
         <button class="filter-header" onclick="toggleFilter(this)">
           <span class="filter-title">${title}</span>
           <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -256,7 +257,7 @@ const initProductSearch = () => {
     const { field, values = [], title = 'Category' } = facet;
     
     // Add search functionality for brand filters
-    const hasSearch = field === 'brand' && values.length > 6;
+    const hasSearch = values.length > 6;
     
     const categoryItems = values.map((item) => {
       const { value, count, label } = item;
@@ -278,7 +279,7 @@ const initProductSearch = () => {
     });
 
     return html`
-      <div class="filter-section">
+      <div class="filter-section collapsed">
         <button class="filter-header" onclick="toggleFilter(this)">
           <span class="filter-title">${title}</span>
           <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -294,10 +295,6 @@ const initProductSearch = () => {
                 class="filter-search-input"
                 oninput="filterBrands(this.value, this.closest('.filter-section'))"
               />
-              <svg class="filter-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.35-4.35"></path>
-              </svg>
             </div>
           ` : ''}
           <div class="filter-options ${hasSearch ? 'with-search' : ''}">

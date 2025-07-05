@@ -73,6 +73,14 @@ yield-search-result {
   }
 }
 
+.products-page yield-search-result {
+  display: contents !important;
+}
+
+.products-page yield-search-result > div {
+  display: contents !important;
+}
+
 yield-search-result > div {
   display: block !important;
 }
@@ -287,11 +295,9 @@ yield-search-box > .yield-search-bar {
 
 /* Filter collapse styling - SCOPED TO PRODUCTS PAGE */
 .products-page .collapse .collapse-title {
-  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .products-page .collapse.collapse-open .collapse-title {
-  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 /* Custom checkbox styling for filters - SCOPED TO PRODUCTS PAGE */
@@ -323,18 +329,7 @@ yield-search-pagination {
   @apply flex justify-center;
 }
 
-/* Custom badge styling */
-.badge-success {
-  @apply bg-green-100 text-green-800 border-green-200;
-}
 
-.badge-warning {
-  @apply bg-yellow-100 text-yellow-800 border-yellow-200;
-}
-
-.badge-secondary {
-  @apply bg-red-500 text-white;
-}
 
 /* Product grid specific styling - Modern 3-column responsive grid like Currys - SCOPED TO PRODUCTS PAGE */
 .products-page #products-grid {
@@ -376,171 +371,206 @@ yield-search-pagination {
   display: contents !important;
 }
 
-/* Ensure each product card takes one grid cell and has proper structure - SCOPED TO PRODUCTS PAGE */
-.products-page yield-search-result .product-card {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  height: 100% !important;
+/* Custom product card class to avoid DaisyUI conflicts - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-product-card {
+  @apply flex flex-col card card-compact card-bordered bg-base-100 !important;
 }
 
-/* Modern Currys-inspired product card styling using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card {
-  border: 1px solid #e5e7eb;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
+.products-page .custom-product-card:hover {
+  box-shadow: 0 20px 25px -5px oklch(var(--bc) / 0.1), 0 8px 10px -6px oklch(var(--bc) / 0.1);
+  border-color: oklch(var(--bc) / 0.3);
+}
+
+/* Custom image container - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-image-container {
+  @apply flex justify-center items-center items-center bg-base-100 p-2 mb-1;
+}
+
+/* Custom product images - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-product-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  max-width: 180px;
+}
+
+.products-page .custom-product-card:hover .custom-product-image {
+  transform: scale(1.05);
+}
+
+/* Custom card content - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-content {
+  padding: 1rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  position: relative;
-  border-radius: 0.5rem;
-  background-color: white;
-  height: 550px; /* Fixed height for perfect alignment */
-}
-
-.products-page .product-card:hover {
-  @apply shadow-xl border-gray-300;
-}
-
-/* Product card image container using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .image-container {
-  @apply relative bg-gray-50 p-5 flex items-center justify-center;
-  min-height: 200px;
-  max-height: 200px;
-}
-
-/* Product images using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card img {
-  @apply w-full h-auto object-contain transition-transform duration-200;
-  max-width: 180px; /* Custom value since max-w-45 doesn't exist */
-}
-
-.products-page .product-card:hover img {
-  @apply scale-105;
-}
-
-/* Product card content using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .content {
-  @apply p-4 flex-1 flex flex-col;
   height: 350px;
 }
 
-/* Content top section using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .content-top {
-  @apply flex flex-col overflow-hidden;
+/* Custom content top section - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-content-top {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   height: 200px;
 }
 
-/* Product title using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .title {
-  @apply text-base leading-5 font-semibold text-gray-900 overflow-hidden;
-  margin: 0 0 2px 0;
-  height: 44px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
+/* Custom product title - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-title {
+  @apply card-title py-2 text-lg line-clamp-2;
 }
 
-/* Brand name using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .brand {
-  @apply text-sm text-gray-600 font-semibold uppercase tracking-wide mb-2;
+/* Custom brand name - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-brand {
+  font-size: 0.875rem;
+  color: oklch(var(--bc) / 0.6);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
-/* Key features using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .features {
-  @apply list-none p-0 text-sm text-gray-600 leading-6 flex-1 overflow-hidden;
+/* Custom key features - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-features {
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: oklch(var(--bc) / 0.7);
+  line-height: 1.5rem;
+  flex: 1;
+  overflow: hidden;
   margin: 6px 0;
   max-height: 85px;
 }
 
-.products-page .product-card .features li {
-  @apply mb-1;
+.products-page .custom-features li {
+  margin-bottom: 0.25rem;
 }
 
-.products-page .product-card .features li:before {
+.products-page .custom-features li:before {
   content: "•";
-  @apply text-gray-400 mr-2;
+  color: oklch(var(--bc) / 0.4);
+  margin-right: 0.5rem;
 }
 
-/* Price section using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .price-section {
-  @apply pt-3 flex flex-col justify-end mt-auto;
+/* Custom rating */
+.custom-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: oklch(var(--bc) / 0.7);
+  margin: 0.5rem 0;
+}
+
+.products-page .custom-stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.products-page .custom-star {
+  width: 1rem;
+  height: 1rem;
+  fill: oklch(var(--wa));
+}
+
+.products-page .custom-star-empty {
+  fill: oklch(var(--bc) / 0.2);
+}
+
+.products-page .custom-rating-text {
+  font-size: 0.875rem;
+  color: oklch(var(--bc) / 0.7);
+}
+
+/* Custom price section - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-price-section {
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-top: auto;
   height: 150px;
 }
 
-.products-page .product-card .price {
-  @apply text-lg font-semibold text-gray-900 mb-2 h-6 flex items-center;
+.products-page .custom-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: oklch(var(--bc));
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
-.products-page .product-card .original-price {
-  @apply text-sm text-gray-500 line-through ml-2;
+.products-page .custom-original-price {
+  font-size: 0.875rem;
+  color: oklch(var(--bc) / 0.5);
+  text-decoration: line-through;
+  margin-left: 0.5rem;
 }
 
-/* Savings badge using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .savings {
-  @apply text-sm text-red-600 font-semibold mb-2 h-5 flex items-center;
+/* Custom savings - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-savings {
+  font-size: 0.875rem;
+  color: oklch(var(--er));
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
 }
 
-/* Stock status using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .stock-status {
-  @apply text-sm text-blue-600 font-semibold mb-3 leading-5 flex items-start;
+/* Custom stock status - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-stock-status {
+  font-size: 0.875rem;
+  color: oklch(var(--in));
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.25rem;
+  display: flex;
+  align-items: start;
   height: 36px;
 }
 
-.products-page .product-card .stock-status.out-of-stock {
-  @apply text-gray-500;
+.products-page .custom-stock-status.out-of-stock {
+  color: oklch(var(--bc) / 0.5);
 }
 
-/* Action buttons using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .actions {
-  @apply flex gap-2 items-stretch;
-  height: 48px;
+/* Custom action buttons - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-actions {
+  @apply flex flex-col md:flex-row justify-end;
 }
 
-.products-page .product-card .btn-view {
-  @apply flex-1 px-4 py-3 text-sm font-semibold border-2 border-blue-600 text-blue-600 rounded cursor-pointer transition-all duration-200 text-center no-underline;
-  background-color: white;
+.products-page .custom-btn-primary {
+  @apply btn btn-primary;
 }
 
-.products-page .product-card .btn-view:hover {
-  @apply bg-blue-600 text-white;
+.products-page .custom-btn-primary:hover {
+  transform: translateY(-1px);
 }
 
-.products-page .product-card .btn-cart {
-  @apply flex-1 px-4 py-3 text-sm font-semibold border-2 border-blue-600 bg-blue-600 text-white rounded cursor-pointer transition-all duration-200 text-center;
+/* Custom discount badge - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-product-badge {
+  background-color: oklch(var(--er));
+  color: oklch(var(--erc));
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 10;
+  padding: 0.25rem 0.5rem;
 }
 
-.products-page .product-card .btn-cart:hover {
-  @apply bg-blue-700 border-blue-700;
-}
 
-/* Discount badge using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-badge {
-  @apply absolute top-3 left-3 bg-red-600 text-white px-2 py-1 rounded text-xs font-semibold uppercase tracking-wide z-10;
-}
-
-/* Rating using Tailwind - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .rating {
-  @apply flex items-center gap-2 text-sm text-gray-600 my-2;
-}
-
-.products-page .product-card .rating .stars {
-  @apply flex gap-1;
-}
-
-.products-page .product-card .rating .star {
-  @apply w-4 h-4 fill-yellow-400;
-}
-
-.products-page .product-card .rating .star.empty {
-  @apply fill-gray-300;
-}
 
 /* Filter container styling - SCOPED TO PRODUCTS PAGE */
 .products-page #filters-container .collapse-content {
-  @apply px-0;
+  padding: 0;
 }
 
 /* Force grid layout for search results - SCOPED TO PRODUCTS PAGE */
@@ -560,12 +590,12 @@ yield-search-pagination {
   grid-column: 1 / -1 !important;
 }
 
-/* Empty results styling - SCOPED TO PRODUCTS PAGE */
+/* Empty results styling using DaisyUI - SCOPED TO PRODUCTS PAGE */
 .products-page yield-search-result .empty-result {
   grid-column: 1 / -1 !important;
   text-align: center;
   padding: 3rem 1rem;
-  color: #6b7280;
+  @apply text-base-content/60;
 }
 
 /* Loading state - SCOPED TO PRODUCTS PAGE */
@@ -575,92 +605,58 @@ yield-search-pagination {
 }
 
 /* Ensure grid items don't overflow - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card * {
+.products-page .custom-product-card * {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-/* Button styling improvements - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .btn {
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.products-page .product-card .btn-primary {
-  background-color: #3b82f6;
-  border-color: #3b82f6;
-  color: white;
-}
-
-.products-page .product-card .btn-primary:hover {
-  background-color: #2563eb;
-  border-color: #2563eb;
+/* Button hover styling improvements - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-product-card .custom-btn-outline:hover,
+.products-page .custom-product-card .custom-btn-primary:hover {
   transform: translateY(-1px);
 }
 
-.products-page .product-card .btn-outline {
-  border: 1px solid #d1d5db;
-  color: #374151;
-  background: white;
+/* Custom button styles to avoid DaisyUI conflicts - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-btn-outline {
+  @apply btn btn-outline btn-primary;
 }
 
-.products-page .product-card .btn-outline:hover {
-  background-color: #f3f4f6;
-  border-color: #9ca3af;
+.products-page .custom-btn-outline:hover {
+  transform: translateY(-1px);
 }
 
-/* Stock badge styling - SCOPED TO PRODUCTS PAGE */
-.products-page .product-card .badge-success {
-  background-color: #10b981;
-  color: white;
+/* Custom badge styles to avoid DaisyUI conflicts - SCOPED TO PRODUCTS PAGE */
+.products-page .custom-badge-success {
+  background-color: oklch(var(--su));
+  color: oklch(var(--suc));
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
 }
 
-.products-page .product-card .badge-warning {
-  background-color: #f59e0b;
-  color: white;
+.products-page .custom-badge-warning {
+  background-color: oklch(var(--wa));
+  color: oklch(var(--wac));
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* General hit styles for other pages (not products) */
-.hit {
-  @apply card card-bordered shadow-xl;
-}
 
-.hit .hit-content {
-  @apply card-body p-4;
-}
 
-.hit .hit-content .hit-title {
-  @apply card-title text-lg font-semibold;
-}
-
-.hit .hit-content .hit-description {
-  @apply text-sm;
-}
-
-.hit .hit-content .hit-actions {
-  @apply card-actions justify-between items-end mt-2;
-}
-
-/* Filter Headers - Currys Style Collapsible - UPDATED TO MATCH EDGE-TO-EDGE DESIGN */
+/* Filter Headers - DaisyUI Style Collapsible - UPDATED TO MATCH EDGE-TO-EDGE DESIGN */
 .products-page .filter-title {
   font-size: 15px;
   font-weight: 600;
-  color: #1f2937;
 }
 
 .products-page .filter-chevron {
   width: 18px;
   height: 18px;
-  color: #6b7280;
   transition: transform 0.2s;
 }
 
@@ -674,24 +670,15 @@ yield-search-pagination {
 
 /* Filter Search Container - Currys Style */
 .products-page .filter-search-container {
-  position: relative;
-  margin-bottom: 18px;
-  margin-top: 16px;
+  @apply relative mb-4 mt-4 px-4;
 }
 
 .products-page .filter-search-input {
-  width: 100%;
-  padding: 10px 18px 10px 44px;
-  font-size: 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background-color: #fafafa;
-  outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+  @apply input input-bordered w-full;
 }
 
 .products-page .filter-search-input:focus {
-  border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -707,9 +694,7 @@ yield-search-pagination {
 
 /* Filter Options Spacing */
 .products-page .filter-options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  @apply flex flex-col gap-1;
 }
 
 .products-page .filter-options.with-search {
@@ -722,38 +707,23 @@ yield-search-pagination {
 }
 
 .products-page .filter-checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 8px;
-  cursor: pointer;
-  border-radius: 6px;
   transition: background-color 0.15s;
+  @apply flex justify-between items-center py-2 px-4 mb-1 hover:bg-base-200 cursor-pointer;
 }
 
 .products-page .filter-checkbox:hover {
-  background-color: #f9fafb;
+  @apply bg-base-200;
 }
 
 .products-page .filter-input {
   width: 18px;
   height: 18px;
-  color: #3b82f6;
-  border: 2px solid #d1d5db;
-  border-radius: 4px;
   margin-right: 14px;
+  @apply border border-base-300;
 }
 
 .products-page .filter-input:focus {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.products-page .filter-label {
-  font-size: 14px;
-  color: #374151;
-  flex: 1;
-  font-weight: 400;
-  line-height: 1.4;
 }
 
 .products-page .filter-count {
@@ -790,15 +760,10 @@ yield-search-pagination {
 /* Override any inline display for filter sections */
 .products-page .filter-section {
   display: block !important;
-  width: 100%;
   clear: both;
-  background-color: white;
-  border: none;
-  border-radius: 0;
   margin-bottom: 0;
   overflow: hidden;
-  box-shadow: none;
-  border-bottom: 1px solid #e5e7eb;
+  @apply border-b border-base-200 w-full;
 }
 
 .products-page .filter-section:first-child {
@@ -806,7 +771,7 @@ yield-search-pagination {
 }
 
 .products-page .filter-section:last-child {
-  border-bottom: none;
+  @apply border-b-0;
 }
 
 /* Ensure the filter headers are truly edge-to-edge */
@@ -816,11 +781,9 @@ yield-search-pagination {
   align-items: center;
   justify-content: space-between;
   padding: 16px !important;
-  background-color: white;
   border-bottom: none;
   text-align: left;
   font-weight: 600;
-  color: #1f2937;
   cursor: pointer;
   outline: none;
   border: none;
@@ -830,11 +793,11 @@ yield-search-pagination {
 }
 
 .products-page .filter-header:hover {
-  background-color: #f9fafb;
+  @apply bg-base-200;
 }
 
 .products-page .filter-content {
-  padding: 0 16px 24px 16px !important;
+  @apply p-0;
 }
 
 /* Ensure parent containers don't use flexbox horizontally */
@@ -860,7 +823,6 @@ yield-search-pagination {
   justify-content: space-between;
   padding: 10px 8px;
   cursor: pointer;
-  border-radius: 6px;
   transition: background-color 0.15s;
 }
 
@@ -873,7 +835,6 @@ yield-search-pagination {
   height: 18px;
   color: #3b82f6;
   border: 2px solid #d1d5db;
-  border-radius: 4px;
   margin-right: 14px;
 }
 
@@ -913,12 +874,6 @@ yield-search-pagination {
 /* TARGET THE MAIN FILTER SIDEBAR CONTAINER - REMOVE PADDING FOR EDGE-TO-EDGE LOOK */
 .products-page aside > div {
   padding: 0 !important;
-}
-
-/* Remove border radius and border for flat Currys-style appearance */
-.products-page aside > div[class*="rounded"] {
-  border-radius: 0 !important;
-  border: none !important;
 }
 
 /* Ensure all filter parent containers have no padding */
@@ -961,13 +916,8 @@ yield-search-pagination {
   padding-right: 0 !important;
 }
 
-/* Add padding back to filter content for proper spacing */
-.products-page .filter-content {
-  padding: 0 16px 24px 16px !important;
-}
 
 /* Style the filters header section to match Currys */
 .products-page aside > div > div:first-child {
-  padding: 16px !important;
-  border-bottom: 1px solid #f3f4f6;
+  @apply border-b border-base-300 p-4;
 }
