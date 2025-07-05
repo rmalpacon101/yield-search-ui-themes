@@ -413,7 +413,7 @@ yield-search-pagination {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 200px;
+  height: 280px;
 }
 
 /* Custom product title - SCOPED TO PRODUCTS PAGE */
