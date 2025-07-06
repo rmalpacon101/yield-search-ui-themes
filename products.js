@@ -45,7 +45,7 @@ const initProductSearch = () => {
       `)}
     `;
 
-    const stockStatus = item.availability_status === 'In Stock' 
+    const stockStatus = item.availabilityStatus === 'In Stock' 
       ? html`<span class="custom-badge-success">In Stock</span>`
       : html`<span class="custom-badge-warning">${item.availability_status}</span>`;
 

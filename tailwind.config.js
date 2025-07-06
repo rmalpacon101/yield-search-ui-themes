@@ -8,6 +8,8 @@ export default {
   theme: {
     fontWeight: {
       semibold: 500,
+      medium: 600,
+      bold: 700,
       bolder: 900
     },
     extend: {
@@ -26,4 +28,4 @@ export default {
       "emerald",
     ],
   },
-};
+}; 
