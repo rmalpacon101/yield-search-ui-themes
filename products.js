@@ -314,7 +314,6 @@ const initProductSearch = () => {
     fields: ["*"], // Request all fields to ensure we get the facet data
     
     clearOptions: {
-      label: "Clear All Filters",
       onClearClicked: () => {
         console.log("Filters cleared");
       },

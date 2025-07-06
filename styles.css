@@ -29,7 +29,7 @@ yield-search-box > .yield-search-bar form {
   @apply flex gap-2 mb-0;
 }
 
-yield-clearall > button {
+.vehicles-page yield-clearall > button {
   @apply btn btn-sm w-full md:btn-md btn-primary;
 }
 
@@ -926,4 +926,8 @@ yield-search-pagination {
 
 .products-page .applied-filter > .remove-filter {
   @apply font-bolder text-lg;
+}
+
+.products-page yield-clearall > button.yield-clear-btn {
+  @apply link link-primary text-sm font-semibold !important;
 }
