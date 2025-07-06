@@ -875,11 +875,11 @@ yield-search-pagination {
 }
 
 /* Ensure all filter parent containers have no padding */
-.products-page #filters-container,
+/* .products-page #filters-container,
 .products-page #mobile-filters-container {
   margin: 0 !important;
   padding: 0 !important;
-}
+} */
 
 /* Override any default padding on filter wrapper divs */
 .products-page .filters-wrapper,
@@ -908,14 +908,22 @@ yield-search-pagination {
 }
 
 /* Override any padding on all divs within filter containers */
-.products-page #filters-container > *,
+/* .products-page #filters-container > *,
 .products-page #mobile-filters-container > * {
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
+} */
 
 
 /* Style the filters header section to match Currys */
 .products-page aside > div > div:first-child {
   @apply border-b border-base-300 p-4;
+}
+
+.products-page .applied-filter {
+  @apply flex items-center justify-between gap-1 badge badge-outline p-4;
+}
+
+.products-page .applied-filter > .remove-filter {
+  @apply font-bolder;
 }
