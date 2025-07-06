@@ -61,8 +61,9 @@
                 <main class="lg:col-span-3">
                     <!-- Sort and Results Header -->
                     <div class="flex items-center justify-between mb-4">
-                        <div class="text-2xl text-base-content/70">
+                        <div class="text-2xl text-base-content/70 flex flex-col">
                             <span class="font-bolder">Products</span>
+                            <yield-search-total class="text-lg" label=""></yield-search-total>
                         </div>
                         <yield-search-sort class="min-w-[200px]"></yield-search-sort>
                     </div>
