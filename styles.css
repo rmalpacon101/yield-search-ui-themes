@@ -301,9 +301,9 @@ yield-search-box > .yield-search-bar {
 }
 
 /* Custom checkbox styling for filters - SCOPED TO PRODUCTS PAGE */
-.products-page .checkbox:checked {
+/* .products-page .checkbox:checked {
   @apply border-primary bg-primary;
-}
+} */
 
 /* Mobile filter button animation */
 .btn-circle {
@@ -646,14 +646,6 @@ yield-search-pagination {
   align-items: center;
 }
 
-
-
-/* Filter Headers - DaisyUI Style Collapsible - UPDATED TO MATCH EDGE-TO-EDGE DESIGN */
-.products-page .filter-title {
-  font-size: 15px;
-  font-weight: 600;
-}
-
 .products-page .filter-chevron {
   width: 18px;
   height: 18px;
@@ -716,10 +708,7 @@ yield-search-pagination {
 }
 
 .products-page .filter-input {
-  width: 18px;
-  height: 18px;
-  margin-right: 14px;
-  @apply border border-base-300;
+  @apply border border-base-300 checkbox checkbox-sm mr-2;
 }
 
 .products-page .filter-input:focus {
@@ -774,20 +763,7 @@ yield-search-pagination {
 
 /* Ensure the filter headers are truly edge-to-edge */
 .products-page .filter-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px !important;
-  border-bottom: none;
-  text-align: left;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  transition: background-color 0.2s;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  @apply w-full flex items-center justify-between p-4 bg-base-100 text-base-content/80 font-medium cursor-pointer;
 }
 
 .products-page .filter-header:hover {

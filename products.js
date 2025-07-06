@@ -186,7 +186,7 @@ const initProductSearch = (path) => {
     });
     
     return html`
-      <div class="filter-section collapsed">
+      <div class="filter-section">
         <button class="filter-header" onclick="toggleFilter(this)">
           <span class="filter-title">${title}</span>
           <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -231,7 +231,7 @@ const initProductSearch = (path) => {
     });
 
     return html`
-      <div class="filter-section collapsed">
+      <div class="filter-section">
         <button class="filter-header" onclick="toggleFilter(this)">
           <span class="filter-title">${title}</span>
           <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -279,7 +279,7 @@ const initProductSearch = (path) => {
     });
 
     return html`
-      <div class="filter-section collapsed">
+      <div class="filter-section">
         <button class="filter-header" onclick="toggleFilter(this)">
           <span class="filter-title">${title}</span>
           <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor">

@@ -26,6 +26,9 @@ export default {
       "corporate",
       "cupcake",
       "emerald",
+      "pastel",
+      "fantasy",
+      "acide"
     ],
   },
 }; 
