@@ -1,4 +1,4 @@
-const initProductSearch = () => {
+const initProductSearch = (path) => {
   const search = document.createElement("yield-search");
 
   /**
@@ -312,7 +312,7 @@ const initProductSearch = () => {
     baseUrl: import.meta.env.VITE_SEARCH_URL,
     enableQueryString: true,
     fields: ["*"], // Request all fields to ensure we get the facet data
-    
+    path: path,
     clearOptions: {
       onClearClicked: () => {
         console.log("Filters cleared");
@@ -440,10 +440,8 @@ window.addToCart = (productId) => {
   alert(`Added product ${productId} to cart`);
 };
 
-// Initialize when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  initProductSearch();
-});
+// Make initProductSearch available globally
+window.initProductSearch = initProductSearch;
 
 // Handle responsive filter synchronization
 window.addEventListener('resize', () => {

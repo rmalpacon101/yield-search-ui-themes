@@ -18,6 +18,9 @@ function createNavigation(currentPage = '') {
                 <a href="products.html" class="nav-link ${currentPage === 'products' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-blue-600'}">
                   Products
                 </a>
+                <a href="groceries.html" class="nav-link ${currentPage === 'groceries' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-blue-600'}">
+                  Groceries
+                </a>
                 <a href="search-box.html" class="nav-link ${currentPage === 'search-box' ? 'text-blue-600 font-medium' : 'text-gray-600 hover:text-blue-600'}">
                   Search Box
                 </a>
@@ -46,6 +49,9 @@ function createNavigation(currentPage = '') {
             </a>
             <a href="products.html" class="nav-link block px-3 py-2 text-base font-medium ${currentPage === 'products' ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">
               Products
+            </a>
+            <a href="groceries.html" class="nav-link block px-3 py-2 text-base font-medium ${currentPage === 'groceries' ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">
+              Groceries
             </a>
             <a href="search-box.html" class="nav-link block px-3 py-2 text-base font-medium ${currentPage === 'search-box' ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}">
               Search Box
@@ -110,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (currentPath.includes('products.html') || currentPath.endsWith('/products')) {
     currentPage = 'products';
+  } else if (currentPath.includes('groceries.html') || currentPath.endsWith('/groceries')) {
+    currentPage = 'groceries';
   } else if (currentPath.includes('search-box.html')) {
     currentPage = 'search-box';
   } else if (currentPath.includes('demo1.html')) {
