@@ -15,6 +15,7 @@ export default defineConfig({
         products: resolve(__dirname, 'products.html'),
         'search-box': resolve(__dirname, 'search-box.html'),
         demo1: resolve(__dirname, 'demo1.html'),
+        groceries: resolve(__dirname, 'groceries.html'),
       }
     },
     copyPublicDir: true,
