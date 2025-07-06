@@ -925,5 +925,5 @@ yield-search-pagination {
 }
 
 .products-page .applied-filter > .remove-filter {
-  @apply font-bolder;
+  @apply font-bolder text-lg;
 }
