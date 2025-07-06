@@ -288,7 +288,7 @@ yield-search-box > .yield-search-bar {
 }
 
 /* Product card hover effects */
-.card:hover {
+.products-page .custom-product-card:hover {
   transform: translateY(-2px);
   transition: transform 0.2s ease-in-out;
 }
