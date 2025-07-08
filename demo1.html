@@ -48,7 +48,7 @@
 
       <!-- Page content here -->
       <div class="min-h-screen bg-base-200">
-        <div class="">
+        <div class="shadow">
           <div class="container mx-auto px-4 py-4">
             <div class="flex flex-col md:flex-row gap-2">
               <div class="flex items-end w-full">
@@ -140,7 +140,7 @@
 
   document.addEventListener("DOMContentLoaded", (event) => {
 
-    const theme = getParameterByName('theme') || 'light';
+    const theme = getParameterByName('theme') || 'corporate';
     document.body.setAttribute('data-theme', theme);
     document.querySelector('select').value = theme;
   });
