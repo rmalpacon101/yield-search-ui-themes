@@ -376,6 +376,7 @@ const initProductSearch = (path) => {
           template: categoryFilter,
         },
       ],
+      defaultTemplate: collapsibleFilter,
       filterSelected: (value, selectedFilters) => {
         console.log("Filter selected:", value, selectedFilters);
       },

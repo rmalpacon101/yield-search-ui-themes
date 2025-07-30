@@ -20,7 +20,7 @@ const initSearch = () => {
       : html``;
 
     return html`
-      <div class="card card-bordered shadow-xl relative overflow-hidden">
+      <div class="card card-bordered shadow-xl relative overflow-hidden bg-base-100">
         <figure>
           ${promoted}
           <img
