@@ -26,6 +26,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-6">
                     <h1 class="text-2xl font-bold text-base-content">Demo 2</h1>
+                    <!-- Desktop Navigation -->
                     <div class="hidden md:flex space-x-4">
                         <a href="index.html" class="text-base-content/70 hover:text-primary transition-colors">Home</a>
                         <a href="demo1.html" class="text-base-content/70 hover:text-primary transition-colors">Demo 1</a>
@@ -33,8 +34,17 @@
                         <a href="groceries.html" class="text-base-content/70 hover:text-primary transition-colors">Groceries</a>
                     </div>
                 </div>
-                <div class="text-sm text-base-content/70">
-                    <yield-search-results-stats></yield-search-results-stats>
+                <div class="flex items-center space-x-3">
+                    <!-- Mobile Menu Button -->
+                    <label for="mobile-nav-drawer" class="btn btn-ghost btn-sm md:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </label>
+                    <!-- Search Stats -->
+                    <div class="text-sm text-base-content/70">
+                        <yield-search-results-stats></yield-search-results-stats>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +112,39 @@
                         <yield-search-pagination></yield-search-pagination>
                     </div>
                 </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="drawer drawer-start md:hidden">
+        <input id="mobile-nav-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-side z-50">
+            <label for="mobile-nav-drawer" class="drawer-overlay"></label>
+            <div class="bg-base-100 w-64 min-h-full p-4">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-base-300">
+                    <h2 class="text-xl font-semibold text-base-content">Menu</h2>
+                    <label for="mobile-nav-drawer" class="btn btn-sm btn-circle btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </label>
+                </div>
+                
+                <nav class="space-y-2">
+                    <a href="index.html" class="block px-4 py-3 text-base-content/70 hover:text-primary hover:bg-base-200 rounded-lg transition-colors">
+                        Home
+                    </a>
+                    <a href="demo1.html" class="block px-4 py-3 text-base-content/70 hover:text-primary hover:bg-base-200 rounded-lg transition-colors">
+                        Demo 1
+                    </a>
+                    <a href="products.html" class="block px-4 py-3 text-primary font-medium bg-primary/10 rounded-lg">
+                        Demo 2
+                    </a>
+                    <a href="groceries.html" class="block px-4 py-3 text-base-content/70 hover:text-primary hover:bg-base-200 rounded-lg transition-colors">
+                        Groceries
+                    </a>
+                </nav>
             </div>
         </div>
     </div>
