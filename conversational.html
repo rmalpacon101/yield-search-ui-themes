@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversational Search - Yield Search</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://cdn.yieldsearchpro.io/conversational.css">
+  <style>
+    /* Fix conversational search to fill container */
+    yield-conversational-search {
+      display: flex !important;
+      flex-direction: column !important;
+      height: calc(100vh - 250px) !important;
+    }
+
+    .conversational-search-container {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      max-height: none !important;
+      flex: 1 !important;
+    }
+
+    .conversation-header {
+      flex-shrink: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 1rem 1.25rem !important;
+      border-bottom: 1px solid var(--fallback-bc, oklch(var(--bc) / 0.1)) !important;
+      background: var(--fallback-b1, oklch(var(--b1))) !important;
+    }
+
+    .conversation-title {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .conversation-title h3 {
+      margin: 0 !important;
+      font-size: 1.125rem !important;
+      font-weight: 600 !important;
+      color: var(--fallback-bc, oklch(var(--bc))) !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .conversation-messages {
+      flex: 1 !important;
+      overflow-y: auto !important;
+      min-height: 0 !important;
+    }
+
+    .conversation-input-container {
+      flex-shrink: 0 !important;
+      border-top: 1px solid var(--fallback-bc, oklch(var(--bc) / 0.2)) !important;
+    }
+
+    /* Message styling */
+    .message-group {
+      margin-bottom: 1.5rem;
+    }
+
+    /* User messages */
+    .message-user {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 0.75rem;
+    }
+
+    .message-user .message-content {
+      background: var(--fallback-p, oklch(var(--p))) !important;
+      color: var(--fallback-pc, oklch(var(--pc))) !important;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      max-width: 70%;
+    }
+
+    .message-user .message-content p {
+      margin: 0;
+      color: inherit !important;
+    }
+
+    .message-user .message-meta {
+      text-align: right;
+      margin-top: 0.25rem;
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      opacity: 0.6;
+    }
+
+    /* AI messages */
+    .message-ai {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .message-avatar {
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    .message-ai .message-content {
+      background: var(--fallback-b2, oklch(var(--b2))) !important;
+      padding: 1rem;
+      border-radius: 1rem;
+      flex: 1;
+      max-width: 85%;
+    }
+
+    /* Message text content */
+    .message-text {
+      line-height: 1.6;
+    }
+
+    .message-text h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--fallback-bc, oklch(var(--bc))) !important;
+    }
+
+    .message-text h2:first-child {
+      margin-top: 0;
+    }
+
+    .message-text p {
+      margin-bottom: 0.75rem;
+      color: var(--fallback-bc, oklch(var(--bc))) !important;
+    }
+
+    .message-text ul {
+      margin: 0.75rem 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .message-text li {
+      margin-bottom: 0;
+      padding: 0.5rem 0.75rem;
+      background: var(--fallback-b1, oklch(var(--b1))) !important;
+      border-radius: 0.5rem;
+      color: var(--fallback-bc, oklch(var(--bc))) !important;
+      font-size: 0.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.125rem;
+    }
+
+    .message-text li strong {
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+      opacity: 0.7;
+      color: var(--fallback-bc, oklch(var(--bc))) !important;
+    }
+
+    .message-text strong {
+      font-weight: 600;
+      color: var(--fallback-bc, oklch(var(--bc))) !important;
+    }
+
+    .message-text img {
+      max-width: 300px;
+      max-height: 200px;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin: 0.75rem 0;
+    }
+
+    .message-text a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem 1rem;
+      background: var(--fallback-p, oklch(var(--p))) !important;
+      color: var(--fallback-pc, oklch(var(--pc))) !important;
+      text-decoration: none !important;
+      font-weight: 500;
+      font-size: 0.875rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+      margin: 0.5rem 0;
+    }
+
+    .message-text a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    .message-text a::after {
+      content: '→';
+      margin-left: 0.25rem;
+    }
+
+    .message-text hr {
+      margin: 1.5rem 0;
+      border: none;
+      border-top: 1px solid var(--fallback-bc, oklch(var(--bc) / 0.1));
+    }
+
+    /* Copy button */
+    .message-copy-btn {
+      margin-top: 0.5rem;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .message-copy-btn:hover {
+      opacity: 1;
+    }
+
+    /* Loading state */
+    .message-loading .message-typing-indicator {
+      padding: 0.75rem 1rem;
+    }
+
+    /* Empty state */
+    .empty-conversation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem;
+      opacity: 0.6;
+    }
+
+    .empty-conversation-icon {
+      margin-bottom: 1rem;
+    }
+
+    .empty-conversation-icon-svg {
+      width: 4rem;
+      height: 4rem;
+      color: var(--fallback-bc, oklch(var(--bc) / 0.3));
+    }
+
+    .empty-conversation-text {
+      font-size: 1rem;
+      color: var(--fallback-bc, oklch(var(--bc) / 0.6));
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      /* Header */
+      .conversation-header {
+        padding: 0.875rem 1rem !important;
+      }
+
+      .conversation-title h3 {
+        font-size: 1rem !important;
+      }
+
+      /* User messages */
+      .message-user .message-content {
+        max-width: 85%;
+        padding: 0.625rem 0.875rem;
+      }
+
+      /* AI messages */
+      .message-ai {
+        gap: 0.5rem;
+      }
+
+      .message-ai .message-content {
+        max-width: 90%;
+        padding: 0.75rem;
+      }
+
+      /* Message text */
+      .message-text {
+        font-size: 0.9375rem;
+      }
+
+      .message-text h2 {
+        font-size: 1rem;
+      }
+
+      /* Key details grid - single column on mobile */
+      .message-text ul {
+        grid-template-columns: 1fr;
+      }
+
+      /* Images */
+      .message-text img {
+        max-width: 100%;
+        max-height: 180px;
+      }
+
+      /* Links/buttons */
+      .message-text a {
+        width: 100%;
+        justify-content: center;
+        padding: 0.625rem 1rem;
+      }
+
+      /* Avatar */
+      .message-avatar .avatar {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .message-avatar-label {
+        font-size: 0.625rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Header */
+      .conversation-header {
+        padding: 0.75rem 0.875rem !important;
+      }
+
+      .conversation-title h3 {
+        font-size: 0.9375rem !important;
+      }
+
+      /* Even smaller screens */
+      .message-user .message-content {
+        max-width: 90%;
+      }
+
+      .message-ai .message-content {
+        max-width: 95%;
+      }
+
+      .message-text ul {
+        gap: 0.375rem;
+      }
+
+      .message-text li {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.8125rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <div class="w-full md:container md:mx-auto px-6 md:px-8 lg:px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-8">
+          <h1 class="text-xl font-bold text-gray-900">AI Search</h1>
+          <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="text-base-content/70 hover:text-primary transition-colors">Home</a>
+            <a href="demo1.html" class="text-base-content/70 hover:text-primary transition-colors">Demo 1</a>
+            <a href="products.html" class="text-base-content/70 hover:text-primary transition-colors">Demo 2</a>
+            <a href="groceries.html" class="text-base-content/70 hover:text-primary transition-colors">Groceries</a>
+            <a href="conversational.html" class="text-primary font-medium">Conversational</a>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="search-mode-selector" class="select select-bordered select-sm" onchange="changeSearchMode(this.value)"
+            aria-label="Search mode selector">
+            <option value="vehicles">Vehicles</option>
+            <option value="products">Products</option>
+          </select>
+          <select value="light" class="select select-bordered select-sm" onchange="changeTheme(this.value)"
+            aria-label="Theme selector">
+            <option value="">Select Theme</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="corporate">Corporate</option>
+            <option value="cupcake">Cupcake</option>
+            <option value="emerald">Emerald</option>
+            <option value="dracula">Dracula</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page content -->
+  <div class="min-h-screen bg-base-200">
+    <div class="w-full px-4 py-6">
+      <div class="max-w-4xl mx-auto">
+        <!-- Conversational Search Component -->
+        <yield-conversational-search
+          placeholder="Ask me anything about our products..."
+          auto-scroll
+          class="bg-base-100 rounded-lg shadow-lg"
+        ></yield-conversational-search>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdn.yieldsearchpro.io/yield-searchpro-ui.js?v=3"></script>
+<script src="./conversational.js?v=3" type="module"></script>
+<script>
+  function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  function changeTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const url = new URL(window.location);
+    url.searchParams.set('theme', theme);
+    window.location.href = url.toString();
+  }
+
+  function changeSearchMode(mode) {
+    const url = new URL(window.location);
+    url.searchParams.set('mode', mode);
+    window.location.href = url.toString();
+  }
+
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const theme = getParameterByName('theme') || 'light';
+    document.body.setAttribute('data-theme', theme);
+
+    const mode = getParameterByName('mode') || 'vehicles';
+
+    // Set theme selector value
+    document.querySelector('select[aria-label="Theme selector"]').value = theme;
+
+    // Set search mode selector value
+    document.querySelector('#search-mode-selector').value = mode;
+  });
+</script>
+
+</html>
