@@ -16,6 +16,7 @@ export default defineConfig({
         'search-box': resolve(__dirname, 'search-box.html'),
         demo1: resolve(__dirname, 'demo1.html'),
         groceries: resolve(__dirname, 'groceries.html'),
+        'ai-search': resolve(__dirname, 'ai-search.html'),
       }
     },
     copyPublicDir: true,
