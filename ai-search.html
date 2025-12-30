@@ -15,7 +15,6 @@
     yield-conversational-search {
       display: flex !important;
       flex-direction: column !important;
-      height: calc(100vh - 250px) !important;
     }
 
     .conversational-search-container {
@@ -120,7 +119,13 @@
 
     /* Message text content */
     .message-text {
-      line-height: 1.6;
+      /* line-height: 1.5; */
+    }
+
+    .message-text .item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--fallback-bc, oklch(var(--bc) / 0.1));
     }
 
     .message-text ul {
@@ -394,14 +399,14 @@
   </nav>
 
   <!-- Page content -->
-  <div class="min-h-screen bg-base-200">
-    <div class="w-full px-4 py-6">
-      <div class="max-w-4xl mx-auto">
+  <div class="h-[calc(100vh-4rem)] bg-base-200 overflow-hidden">
+    <div class="w-full h-full px-4 py-6">
+      <div class="max-w-4xl mx-auto h-full">
         <!-- Conversational Search Component -->
         <yield-conversational-search
           placeholder="Ask me anything about our products..."
           auto-scroll
-          class="bg-base-100 rounded-lg shadow-lg"
+          class="bg-base-100 rounded-lg shadow-lg h-full"
         ></yield-conversational-search>
       </div>
     </div>
