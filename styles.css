@@ -123,10 +123,6 @@ nav[role="navigation"] > ul > li button[aria-current="true"] {
   @apply bg-base-300;
 }
 
-yield-search-box > .yield-search-bar {
-  @apply relative;
-}
-
 /* Sidebar */
 .side-filter .yield-filter-header {
   @apply mb-2 px-2 text-lg font-semibold;
