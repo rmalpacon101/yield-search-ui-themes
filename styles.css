@@ -127,60 +127,6 @@ yield-search-box > .yield-search-bar {
   @apply relative;
 }
 
-.suggestions-footer {
-  @apply text-sm bg-base-200 sticky bottom-0 p-2 flex gap-2 justify-end;
-}
-
-.suggestions-footer a > span{
-  @apply text-primary;
-}
-
-.suggestions-content {
-  @apply overflow-y-auto max-h-[400px];
-}
-
-.suggestions-dropdown {
-  @apply absolute bg-base-100 shadow-lg border border-base-200 rounded w-full shadow-lg z-[1];
-  top: 110%;
-}
-
-.suggestion-item {
-  @apply border-b border-base-200 p-4 cursor-pointer;
-}
-
-.suggestion-item:last-child {
-  border-bottom: none;
-}
-
-.suggestion-item.selected,
-.suggestion-item:hover {
-  @apply bg-base-300;
-}
-
-.suggestion-item .subtitle {
-  @apply text-base-content/50;
-}
-
-.suggestion-item .description {
-  @apply text-base-content/75;
-}
-
-.autocomplete-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.search-input-wrapper {
-  position: relative;
-  margin-bottom: 1rem;
-}
-
-.suggestions-list .selected {
-  @apply bg-base-300;
-}
-
 /* Sidebar */
 .side-filter .yield-filter-header {
   @apply mb-2 px-2 text-lg font-semibold;
