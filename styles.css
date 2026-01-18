@@ -21,14 +21,6 @@ body {
   min-height: 100vh;
 }
 
-yield-search-box {
-  @apply form-control flex-1;
-}
-
-yield-search-box > .yield-search-bar form {
-  @apply flex gap-2 mb-0;
-}
-
 .vehicles-page yield-clearall > button {
   @apply btn btn-sm w-full md:btn-md btn-primary;
 }
@@ -39,14 +31,6 @@ yield-search-facet {
 
 yield-search-sort > .yield-search-sort > select {
   @apply w-full;
-}
-
-yield-search-box > .yield-search-bar input[type="search"] {
-  @apply input input-bordered w-full;
-}
-
-yield-search-box > .yield-search-bar button {
-  @apply btn btn-primary;
 }
 
 yield-facet-dropdownlist > select,
